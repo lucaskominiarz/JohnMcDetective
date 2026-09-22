@@ -7,6 +7,8 @@ public class ScrollView : MonoBehaviour
     [SerializeField] private float snapSpeed = 12f;
     [SerializeField] private float velocityThreshold = 200f;
     [SerializeField] private float dragThresholdPixels = 15f;
+    [SerializeField] private Vector2 minPos; // a changer quand j'aurais fait le tool
+    [SerializeField] private Vector2 maxPos;// pareil
 
     private Camera cam;
     private Vector3 targetPosition;
@@ -125,6 +127,6 @@ public class ScrollView : MonoBehaviour
             }
         }
 
-        targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
+        targetPosition = new Vector3(Mathf.Clamp(targetX * pageSize.x, minPos.x, maxPos.x), Mathf.Clamp(targetY * pageSize.y,minPos.y, maxPos.y), transform.position.z);
     }
 }
