@@ -1,14 +1,17 @@
 using UnityEditor;
 using UnityEngine;
 
-public class LevelEditor : EditorWindow
+public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
 {
     private MapData targetMap;
     private Vector2 scrollPosition;
     private Vector2 selectedCell = new Vector2(-1, -1);
-
+    private  Vector2 cameraMoveValue =  new Vector2(4.5f, 10f);
+    
     private const float CellSize = 75f;
     private const float CellPadding = 4f;
+    private const string ParentName = "RoomsParent";
+    
 
     [MenuItem("Tools/Level Editor")]
     public static void OpenWindow()
@@ -25,6 +28,8 @@ public class LevelEditor : EditorWindow
             EditorGUILayout.HelpBox("Sélectionne ou crée un fichier Data pour commencer", MessageType.Info);
             return;
         }
+
+        DrawGenerationArea();
 
         EditorGUILayout.Space(10);
 
@@ -62,6 +67,140 @@ public class LevelEditor : EditorWindow
             targetMap.ResizeGrid(newWidth, newHeight);
         }
     }
+
+    #region Generation In Editor
+    private void DrawGenerationArea()
+    {
+        EditorGUILayout.Space(10);
+        EditorGUILayout.BeginVertical("box");
+        EditorGUILayout.LabelField("Génération dans la Scène", EditorStyles.boldLabel);
+        
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Générer toute la Map", GUILayout.Height(30)))
+        {
+            GenerateFullMap();
+        }
+        if (GUILayout.Button("Effacer toute la Map", GUILayout.Height(30)))
+        {
+            ClearFullMap();
+        }
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(2);
+
+        EditorGUILayout.BeginHorizontal();
+        bool hasSelection = selectedCell.x >= 0 && selectedCell.y >= 0;
+        GUI.enabled = hasSelection;
+        if (GUILayout.Button(hasSelection ? $"Générer Séléction [{selectedCell.x}, {selectedCell.y}]" : "Générer la salle", GUILayout.Height(25)))
+        {
+            GenerateRoomInScene((int)selectedCell.x, (int)selectedCell.y);
+        }
+        if (GUILayout.Button(hasSelection ? $"Effacer Séléction [{selectedCell.x}, {selectedCell.y}]" : "Effacer la salle", GUILayout.Height(25)))
+        {
+            ClearRoomInScene((int)selectedCell.x, (int)selectedCell.y);
+        }
+        GUI.enabled = true;
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.EndVertical();
+    }
+    
+
+    private Transform GetOrCreateRoomsParent()
+    {
+        GameObject parent = GameObject.Find(ParentName);
+        if (parent == null)
+        {
+            parent = new GameObject(ParentName);
+            Undo.RegisterCreatedObjectUndo(parent, "Create Rooms Parent");
+        }
+        return parent.transform;
+    }
+
+    private void GenerateFullMap()
+    {
+        ClearFullMap(); 
+        for (int x = 0; x < targetMap.gridWidth; x++)
+        {
+            for (int y = 0; y < targetMap.gridHeight; y++)
+            {
+                GenerateRoomInScene(x, y);
+            }
+        }
+        Debug.Log("Map générée avec succès dans l'éditeur.");
+    }
+
+    private void ClearFullMap()
+    {
+        GameObject parent = GameObject.Find(ParentName);
+        if (parent != null)
+        {
+            Undo.DestroyObjectImmediate(parent);
+            Debug.Log("Map effacée.");
+        }
+    }
+
+    private void GenerateRoomInScene(int x, int y)
+    {
+        RoomData room = targetMap.GetRoom(x, y);
+        if (room.IsEmpty)
+        {
+            ClearRoomInScene(x, y); 
+            return;
+        }
+
+        Transform parent = GetOrCreateRoomsParent();
+        string roomName = $"Room_{x}_{y}";
+       
+
+        ClearRoomInScene(x, y);
+
+        GameObject roomGo = new GameObject(roomName);
+        roomGo.transform.SetParent(parent);
+        Undo.RegisterCreatedObjectUndo(roomGo, $"Generate Room {x}_{y}");
+
+        Vector2 roomBasePosition = new Vector2(cameraMoveValue.x * x, cameraMoveValue.y * y);
+
+        if (room.backGround != null)
+        {
+            GameObject bg = (GameObject)PrefabUtility.InstantiatePrefab(room.backGround, roomGo.transform);
+            bg.transform.position = roomBasePosition;
+            Undo.RegisterCreatedObjectUndo(bg, "Instantiate Background");
+        }
+
+        if (room.roomObjects != null)
+        {
+            foreach (ObjectItem obj in room.roomObjects)
+            {
+                if (obj.prefab == null) continue;
+
+                GameObject newObj = (GameObject)PrefabUtility.InstantiatePrefab(obj.prefab, roomGo.transform);
+                newObj.transform.position = new Vector2(
+                    roomBasePosition.x + Mathf.Clamp(obj.position.x, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f),
+                    roomBasePosition.y + Mathf.Clamp(obj.position.y, -cameraMoveValue.y / 2f, cameraMoveValue.y / 2f)
+                );
+
+                SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
+                if (sr != null) sr.sortingOrder = obj.layer + 1;
+
+                Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");
+            }
+        }
+    }
+
+    private void ClearRoomInScene(int x, int y)
+    {
+        GameObject parent = GameObject.Find(ParentName);
+        if (parent != null)
+        {
+            Transform roomTransform = parent.transform.Find($"Room_{x}_{y}");
+            if (roomTransform != null)
+            {
+                Undo.DestroyObjectImmediate(roomTransform.gameObject);
+            }
+        }
+    }
+    #endregion
 
     private void DrawGridArea()
     {
