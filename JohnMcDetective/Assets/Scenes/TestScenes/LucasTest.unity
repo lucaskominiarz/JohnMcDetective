@@ -1092,11 +1092,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrollView
   pageSize: {x: 4.5, y: 10}
-  snapSpeed: 10
+  snapSpeed: 15
   velocityThreshold: 5
   dragThresholdPixels: 20
-  minPos: {x: -4.5, y: 0}
-  maxPos: {x: 13.5, y: 20}
+  mapData: {fileID: 11400000, guid: aa3ccd1d647647e46808c864a014381f, type: 2}
+  positionAccurancyThreshold: 0.2
 --- !u!1 &1370513212
 GameObject:
   m_ObjectHideFlags: 0
