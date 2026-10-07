@@ -25,6 +25,9 @@ public class ScrollView : MonoBehaviour
     private void Awake()
     {
         _cam = GetComponent<Camera>();
+        transform.position = new Vector3(mapData.startPosition.x * pageSize.x, 
+            mapData.startPosition.y * pageSize.y, 
+            transform.position.z);
         _targetPosition = transform.position;
     }
 
