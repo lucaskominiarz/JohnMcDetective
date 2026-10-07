@@ -4,37 +4,37 @@ using UnityEngine.InputSystem;
 public class ScrollView : MonoBehaviour
 {
     [SerializeField] private Vector2 pageSize = new Vector2(4.5f, 10f);
-    [SerializeField] private float snapSpeed = 12f;
-    [SerializeField] private float velocityThreshold = 200f;
-    [SerializeField] private float dragThresholdPixels = 15f;
-    [SerializeField] private Vector2 minPos; // a changer quand j'aurais fait le tool
-    [SerializeField] private Vector2 maxPos;// pareil
+    [SerializeField] private float snapSpeed = 15f;
+    [SerializeField] private float velocityThreshold = 5f;
+    [SerializeField] private float dragThresholdPixels = 20f;
+    [SerializeField] private MapData mapData;
+    [SerializeField] private float positionAccurancyThreshold = 0.2f;
 
-    private Camera cam;
-    private Vector3 targetPosition;
-    private Vector2 touchStartScreenPos;
-    private Vector2 lastScreenPos;
-    private Vector2 touchVelocity;
-    private bool isDragging = false;
+    private Camera _cam;
+    private Vector3 _targetPosition;
+    private Vector2 _touchStartScreenPos;
+    private Vector2 _lastScreenPos;
+    private Vector2 _touchVelocity;
+    private bool _isDragging = false;
 
-    private Vector3 startCamPos;
+    private Vector3 _startCamPos;
 
     private enum DragDirection { None, Horizontal, Vertical }
-    private DragDirection currentDragDirection = DragDirection.None;
+    private DragDirection _currentDragDirection = DragDirection.None;
 
     private void Awake()
     {
-        cam = GetComponent<Camera>();
-        targetPosition = transform.position;
+        _cam = GetComponent<Camera>();
+        _targetPosition = transform.position;
     }
 
     private void Update()
     {
         HandleTouchInput();
 
-        if (!isDragging)
+        if (!_isDragging)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * snapSpeed);
+            transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * snapSpeed);
         }
     }
 
@@ -42,84 +42,85 @@ public class ScrollView : MonoBehaviour
     {
         Pointer currentPointer = Pointer.current;
         if (currentPointer == null) return;
+        if (Vector2.Distance(transform.position, _targetPosition) > positionAccurancyThreshold &&!_isDragging) return;
         if (currentPointer.press.wasPressedThisFrame)
         {
-            isDragging = true;
-            currentDragDirection = DragDirection.None;
+            _isDragging = true;
+            _currentDragDirection = DragDirection.None;
 
-            touchStartScreenPos = currentPointer.position.ReadValue();
-            lastScreenPos = touchStartScreenPos;
-            startCamPos = transform.position;
+            _touchStartScreenPos = currentPointer.position.ReadValue();
+            _lastScreenPos = _touchStartScreenPos;
+            _startCamPos = transform.position;
         }
 
-        if (currentPointer.press.isPressed && isDragging)
+        if (currentPointer.press.isPressed && _isDragging)
         {
             Vector2 currentScreenPos = currentPointer.position.ReadValue();
-            Vector2 deltaPixels = currentScreenPos - touchStartScreenPos;
-            if (currentDragDirection == DragDirection.None)
+            Vector2 deltaPixels = currentScreenPos - _touchStartScreenPos;
+            if (_currentDragDirection == DragDirection.None)
             {
                 if (Mathf.Abs(deltaPixels.x) > dragThresholdPixels)
                 {
-                    currentDragDirection = DragDirection.Horizontal;
+                    _currentDragDirection = DragDirection.Horizontal;
                 }
                 else if (Mathf.Abs(deltaPixels.y) > dragThresholdPixels)
                 {
-                    currentDragDirection = DragDirection.Vertical;
+                    _currentDragDirection = DragDirection.Vertical;
                 }
             }
 
 
-            float unitsPerPixel = (cam.orthographicSize * 2f) / Screen.height;
-            if (currentDragDirection == DragDirection.Horizontal)
+            float unitsPerPixel = (_cam.orthographicSize * 2f) / Screen.height;
+            if (_currentDragDirection == DragDirection.Horizontal)
             {
                 float deltaXWorld = deltaPixels.x * unitsPerPixel;
-                transform.position = new Vector3(startCamPos.x - deltaXWorld, startCamPos.y, startCamPos.z);
+                transform.position = new Vector3(_startCamPos.x - deltaXWorld, _startCamPos.y, _startCamPos.z);
             }
-            else if (currentDragDirection == DragDirection.Vertical)
+            else if (_currentDragDirection == DragDirection.Vertical)
             {
                 float deltaYWorld = deltaPixels.y * unitsPerPixel;
-                transform.position = new Vector3(startCamPos.x, startCamPos.y - deltaYWorld, startCamPos.z);
+                transform.position = new Vector3(_startCamPos.x, _startCamPos.y - deltaYWorld, _startCamPos.z);
             }
 
-            touchVelocity = (currentScreenPos - lastScreenPos) / Time.deltaTime;
-            lastScreenPos = currentScreenPos;
+            _touchVelocity = (currentScreenPos - _lastScreenPos) / Time.deltaTime;
+            _lastScreenPos = currentScreenPos;
         }
 
-        if (currentPointer.press.wasReleasedThisFrame && isDragging)
+        if (currentPointer.press.wasReleasedThisFrame && _isDragging)
         {
-            isDragging = false;
+            _isDragging = false;
             SnapToSingleAxis();
-            currentDragDirection = DragDirection.None;
+            _currentDragDirection = DragDirection.None;
         }
     }
 
     private void SnapToSingleAxis()
     {
-        int startX = Mathf.RoundToInt(startCamPos.x / pageSize.x);
-        int startY = Mathf.RoundToInt(startCamPos.y / pageSize.y);
+        int startX = Mathf.RoundToInt(_startCamPos.x / pageSize.x);
+        int startY = Mathf.RoundToInt(_startCamPos.y / pageSize.y);
 
         int targetX = startX;
         int targetY = startY;
 
-        float deltaX = transform.position.x - startCamPos.x;
-        float deltaY = transform.position.y - startCamPos.y;
+        float deltaX = transform.position.x - _startCamPos.x;
+        float deltaY = transform.position.y - _startCamPos.y;
 
-        if (currentDragDirection == DragDirection.Horizontal)
+        if (_currentDragDirection == DragDirection.Horizontal)
         {
-            if (Mathf.Abs(touchVelocity.x) > velocityThreshold)
+            if (Mathf.Abs(_touchVelocity.x) > velocityThreshold)
             {
-                targetX += touchVelocity.x < 0 ? 1 : -1;
+                targetX += _touchVelocity.x < 0 ? 1 : -1;
             }
             else if (Mathf.Abs(deltaX) > pageSize.x * 0.35f)
             {
                 targetX += deltaX > 0 ? 1 : -1;
             }
         }
-        else if (currentDragDirection == DragDirection.Vertical)
+        else if (_currentDragDirection == DragDirection.Vertical)
         {
-            if (Mathf.Abs(touchVelocity.y) > velocityThreshold)
+            if (Mathf.Abs(_touchVelocity.y) > velocityThreshold)
             {
-                targetY += touchVelocity.y < 0 ? 1 : -1;
+                targetY += _touchVelocity.y < 0 ? 1 : -1;
             }
             else if (Mathf.Abs(deltaY) > pageSize.y * 0.35f)
             {
@@ -127,6 +128,12 @@ public class ScrollView : MonoBehaviour
             }
         }
 
-        targetPosition = new Vector3(Mathf.Clamp(targetX * pageSize.x, minPos.x, maxPos.x), Mathf.Clamp(targetY * pageSize.y,minPos.y, maxPos.y), transform.position.z);
+        if (mapData.GetRoom(targetX, targetY).IsEmpty )
+        {
+            _targetPosition = new Vector3(startX * pageSize.x, startY * pageSize.y, transform.position.z);
+            return;
+        }
+
+        _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
     }
 }

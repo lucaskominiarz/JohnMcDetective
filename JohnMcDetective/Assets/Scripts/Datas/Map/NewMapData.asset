@@ -15,15 +15,31 @@ MonoBehaviour:
   gridWidth: 5
   gridHeight: 5
   rooms:
-  - type: 0
-    roomName: 
-    backGround: {fileID: 0}
-    roomObjects: []
+  - type: 2
+    roomName: ffeef
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 0.12, y: -0}
+    - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: -1.01, y: -1}
     isLocked: 0
-  - type: 0
-    roomName: 
-    backGround: {fileID: 0}
-    roomObjects: []
+  - type: 3
+    roomName: fezeterz
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: 1.38, y: -1}
+    - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 0.56, y: -0}
     isLocked: 0
   - type: 0
     roomName: 
