@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class ScrollView : MonoBehaviour
@@ -43,11 +45,22 @@ public class ScrollView : MonoBehaviour
 
     private void HandleTouchInput()
     {
+        if (DraggableItem.IsDraggingAnyItem)
+        {
+            _isDragging = false;
+            return;
+        }
+
         Pointer currentPointer = Pointer.current;
         if (currentPointer == null) return;
-        if (Vector2.Distance(transform.position, _targetPosition) > positionAccurancyThreshold &&!_isDragging) return;
+
+        if (Vector2.Distance(transform.position, _targetPosition) > positionAccurancyThreshold && !_isDragging) return;
+
         if (currentPointer.press.wasPressedThisFrame)
         {
+            if (IsPointerOverItem())
+                return;
+
             _isDragging = true;
             _currentDragDirection = DragDirection.None;
 
@@ -60,6 +73,7 @@ public class ScrollView : MonoBehaviour
         {
             Vector2 currentScreenPos = currentPointer.position.ReadValue();
             Vector2 deltaPixels = currentScreenPos - _touchStartScreenPos;
+
             if (_currentDragDirection == DragDirection.None)
             {
                 if (Mathf.Abs(deltaPixels.x) > dragThresholdPixels)
@@ -71,7 +85,6 @@ public class ScrollView : MonoBehaviour
                     _currentDragDirection = DragDirection.Vertical;
                 }
             }
-
 
             float unitsPerPixel = (_cam.orthographicSize * 2f) / Screen.height;
             if (_currentDragDirection == DragDirection.Horizontal)
@@ -95,6 +108,29 @@ public class ScrollView : MonoBehaviour
             SnapToSingleAxis();
             _currentDragDirection = DragDirection.None;
         }
+    }
+
+    private bool IsPointerOverItem()
+    {
+        if (EventSystem.current == null) return false;
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current)
+        {
+            position = Pointer.current.position.ReadValue()
+        };
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.GetComponentInParent<DraggableItem>() != null)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void SnapToSingleAxis()
@@ -131,7 +167,7 @@ public class ScrollView : MonoBehaviour
             }
         }
 
-        if (mapData.GetRoom(targetX, targetY).IsEmpty )
+        if (mapData.GetRoom(targetX, targetY).IsEmpty)
         {
             _targetPosition = new Vector3(startX * pageSize.x, startY * pageSize.y, transform.position.z);
             return;

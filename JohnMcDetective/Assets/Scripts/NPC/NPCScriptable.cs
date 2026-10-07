@@ -1,6 +1,5 @@
 using UnityEngine;
 using NaughtyAttributes;
-using UnityEditor.ShaderKeywordFilter;
 
 [CreateAssetMenu(fileName = "NPCScriptable", menuName = "Scriptable Objects/NPCScriptable")]
 public class NPCScriptable : ScriptableObject

@@ -1,4 +1,4 @@
-  using System;
+using System.Collections;
   using TMPro;
   using UnityEngine;
   using UnityEngine.SceneManagement;
@@ -64,9 +64,23 @@
         if (npcData.IsMurderer)
         {
             Debug.Log("Tueur trouvé");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (!textZones[1])
+                return;
+            textZones[1].text = "Tu m'as démasqué";
+            StartCoroutine(RestartLevelCoroutine());
+            
             return;
         }
+        if (!textZones[1])
+            return;
+        textZones[1].text = "Tu t'es trompé";
+        StartCoroutine(RestartLevelCoroutine());
         Debug.Log("Pas le tueur");
+    }
+
+    private IEnumerator RestartLevelCoroutine() // juste pour le proto a dégager apres
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

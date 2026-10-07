@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63e19601fe99fd44bb8504a7ef88df5, type: 3}
+  m_Name: Encens
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectScriptable
+  <ObjectType>k__BackingField: 1
+  <ObjectName>k__BackingField: Encens
+  <ObjectSprite>k__BackingField: {fileID: 6693023499964313746, guid: a3158c0525d108046ba8f3b7ee09edcd, type: 3}
+  <ObjectScale>k__BackingField: {x: 2.5, y: 2.5}

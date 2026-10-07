@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEngine;
 
@@ -474,3 +476,4 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         GUI.Label(new Rect(pixelX - 40f, pixelY + height / 2f, 80f, 15f), name, labelStyle);
     }
 }
+#endif

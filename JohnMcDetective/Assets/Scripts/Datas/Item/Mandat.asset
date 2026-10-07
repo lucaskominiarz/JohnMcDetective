@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63e19601fe99fd44bb8504a7ef88df5, type: 3}
+  m_Name: Mandat
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectScriptable
+  <ObjectType>k__BackingField: 0
+  <ObjectName>k__BackingField: Mandat
+  <ObjectSprite>k__BackingField: {fileID: -1311842932860294666, guid: 9449b7b2a4e95ab4d8bbd1d83b6380d4, type: 3}
+  <ObjectScale>k__BackingField: {x: 2.5, y: 2.5}
