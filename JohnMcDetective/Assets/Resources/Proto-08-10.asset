@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e022610ea8f58574f8e415605717541b, type: 3}
+  m_Name: Proto-08-10
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  gridWidth: 6
+  gridHeight: 2
+  rooms:
+  - type: 1
+    roomName: Couloir
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 2864ea2bc79cf46459db9cd9430388d4, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: 0, y: -1}
+    isLocked: 0
+  - type: 2
+    roomName: "Sc\xE8ne de crime"
+    backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 0, y: -0}
+    isLocked: 0
+  - type: 1
+    roomName: Couloir
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects: []
+    isLocked: 0
+  - type: 3
+    roomName: Chambre 1
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 87848cd798bf2254ea493707ced8dd25, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 0, y: -0}
+    isLocked: 0
+  - type: 3
+    roomName: Chambre 2
+    backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: b72d172f72b5f99488760cd048470e39, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: 0, y: -1}
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
