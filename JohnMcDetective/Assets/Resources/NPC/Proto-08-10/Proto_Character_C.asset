@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
+  m_Name: Proto_Character_C
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
+  <NpcType>k__BackingField: 2
+  <RevealObjectType>k__BackingField: 0
+  <NpcName>k__BackingField: C
+  <NpcBaseSprite>k__BackingField: {fileID: -3642673182287933931, guid: 1d304ec33136cfa4593e3b4c1cc8f365, type: 3}
+  <NpcRevealedSprite>k__BackingField: {fileID: -3642673182287933931, guid: 1d304ec33136cfa4593e3b4c1cc8f365, type: 3}
+  <IsMurderer>k__BackingField: 1
+  <VoiceLine>k__BackingField: "Le suspect qui se trouve dans la <b>pi\xE8ce du tigre</b>
+    est un <b>humain</b>"
+  <VoiceLineAlt>k__BackingField: 

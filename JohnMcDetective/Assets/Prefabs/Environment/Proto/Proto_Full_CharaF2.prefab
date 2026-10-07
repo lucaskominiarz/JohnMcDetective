@@ -8,10 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3011770944448541003, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      propertyPath: npcData
+      value: 
+      objectReference: {fileID: 11400000, guid: 25ffb4e4e9d639f41b9682fa59ec5bbf, type: 2}
     - target: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Name
       value: Proto_Full_CharaF2
       objectReference: {fileID: 0}
+    - target: {fileID: 2530163890455922258, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -937432556870064064, guid: 5f3cb7f3c2521bb4991c734f4c34064d, type: 3}
     - target: {fileID: 2901443591101054777, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -51,6 +59,18 @@ PrefabInstance:
     - target: {fileID: 2901443591101054777, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533949373871117221, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533949373871117221, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6533949373871117221, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6648317395116533431, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Sprite

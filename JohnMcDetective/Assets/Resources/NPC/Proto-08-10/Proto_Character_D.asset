@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
+  m_Name: Proto_Character_D
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
+  <NpcType>k__BackingField: 1
+  <RevealObjectType>k__BackingField: 1
+  <NpcName>k__BackingField: D
+  <NpcBaseSprite>k__BackingField: {fileID: -8852406179557801662, guid: 635fac7a3ce13dd4c9f8c8168efda4f2, type: 3}
+  <NpcRevealedSprite>k__BackingField: {fileID: -7036080236049329453, guid: 2bc692d6528cd0b4c878af1cdbd6c1d8, type: 3}
+  <IsMurderer>k__BackingField: 0
+  <VoiceLine>k__BackingField: Il y a <b> 1 Mei </b> et c'est le <b>coupable</b>
+  <VoiceLineAlt>k__BackingField: Le coupable se trouve dans la <b>salle du dragon</b>
