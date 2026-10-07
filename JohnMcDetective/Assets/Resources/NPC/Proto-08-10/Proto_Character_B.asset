@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
+  m_Name: Proto_Character_B
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
+  <NpcType>k__BackingField: 0
+  <RevealObjectType>k__BackingField: 0
+  <NpcName>k__BackingField: B
+  <NpcBaseSprite>k__BackingField: {fileID: -803114227426156039, guid: dc0a11536b0f25d47b7d1a4dc2915758, type: 3}
+  <NpcRevealedSprite>k__BackingField: {fileID: 5434685697678892487, guid: dff6c84d97101584caff2de34bd724f4, type: 3}
+  <IsMurderer>k__BackingField: 0
+  <VoiceLine>k__BackingField: Parmis <b>A</b> et <b>D</b>, il y a <b>1 Bai Ze</b>
+  <VoiceLineAlt>k__BackingField: 

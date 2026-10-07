@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
+  m_Name: Proto_Character_A
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
+  <NpcType>k__BackingField: 0
+  <RevealObjectType>k__BackingField: 0
+  <NpcName>k__BackingField: A
+  <NpcBaseSprite>k__BackingField: {fileID: -8516092245539368963, guid: d5ee0e08ef029514f8e9cd9830a13a57, type: 3}
+  <NpcRevealedSprite>k__BackingField: {fileID: -8516092245539368963, guid: d5ee0e08ef029514f8e9cd9830a13a57, type: 3}
+  <IsMurderer>k__BackingField: 0
+  <VoiceLine>k__BackingField: "Je suis du m\xEAme type que <b>B</b>"
+  <VoiceLineAlt>k__BackingField: 

@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e022610ea8f58574f8e415605717541b, type: 3}
+  m_Name: Proto-08-10
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  gridWidth: 6
+  gridHeight: 2
+  startPosition: {x: 2, y: 0}
+  rooms:
+  - type: 1
+    roomName: Couloir
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 2864ea2bc79cf46459db9cd9430388d4, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: 0, y: -1}
+    - prefab: {fileID: 1513895650028354144, guid: b2685480079f6b243bb862cdf7f508bd, type: 3}
+      layer: 3
+      layerSpacing: -1
+      position: {x: 1.24, y: -3}
+    isLocked: 0
+  - type: 1
+    roomName: Couloir
+    backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 890de514bf0f22d4d87949338e942928, type: 3}
+      layer: 3
+      layerSpacing: -1
+      position: {x: 1.42, y: -3}
+    - prefab: {fileID: 1300193702386794501, guid: 93d2173b43121df4b8f6ee8298e2e369, type: 3}
+      layer: 5
+      layerSpacing: 0.7
+      position: {x: 0, y: 3.5}
+    isLocked: 0
+  - type: 2
+    roomName: "Sc\xE8ne du crime"
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: b72d172f72b5f99488760cd048470e39, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 1.73, y: -0}
+    - prefab: {fileID: 1300193702386794501, guid: 7f76ef39c7f22be4e9936e5c59e91680, type: 3}
+      layer: 1
+      layerSpacing: -1
+      position: {x: 0, y: -1}
+    isLocked: 0
+  - type: 3
+    roomName: Chambre 1
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 87848cd798bf2254ea493707ced8dd25, type: 3}
+      layer: 0
+      layerSpacing: -1
+      position: {x: 0, y: -0}
+    - prefab: {fileID: 1513895650028354144, guid: 837a95d6bd5124e4ab805ebcacbcf6f1, type: 3}
+      layer: 3
+      layerSpacing: -1
+      position: {x: 1.23, y: -3}
+    - prefab: {fileID: 1300193702386794501, guid: cf8e458455738a54ab7597f1412dd948, type: 3}
+      layer: 1
+      layerSpacing: 4
+      position: {x: 0, y: 4}
+    isLocked: 0
+  - type: 3
+    roomName: Chambre 2
+    backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: bd826fc1b0b65ae4a8ca09688f1a204b, type: 3}
+      layer: 3
+      layerSpacing: -1
+      position: {x: 1.27, y: -3}
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    roomObjects: []
+    isLocked: 0

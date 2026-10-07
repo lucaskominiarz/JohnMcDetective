@@ -18,6 +18,7 @@ public class NPCScriptable : ScriptableObject
 }
 public enum NPCType 
 {
+    Humain,
     BaiZe,
     Mei,
     Renard
