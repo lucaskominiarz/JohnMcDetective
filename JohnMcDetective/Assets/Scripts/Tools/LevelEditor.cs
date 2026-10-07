@@ -60,6 +60,7 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         EditorGUI.BeginChangeCheck();
         int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
         int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
+        targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ", targetMap.startPosition);
 
         if (EditorGUI.EndChangeCheck())
         {
