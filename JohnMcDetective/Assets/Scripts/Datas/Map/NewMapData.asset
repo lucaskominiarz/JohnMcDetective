@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapData
   gridWidth: 5
   gridHeight: 5
+  startPosition: {x: 0, y: 0}
   rooms:
   - type: 2
     roomName: ffeef
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 0
@@ -31,6 +33,7 @@ MonoBehaviour:
   - type: 3
     roomName: fezeterz
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 1
@@ -44,56 +47,67 @@ MonoBehaviour:
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 2
     roomName: Crime
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 3
     roomName: TestRoom
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 0
@@ -107,60 +121,72 @@ MonoBehaviour:
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0

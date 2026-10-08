@@ -24,6 +24,7 @@ public struct RoomData
     public RoomType type;
     public string roomName;
     public GameObject backGround;
+    public GameObject canvas;
     public ObjectItem[] roomObjects;
     public bool isLocked;
 

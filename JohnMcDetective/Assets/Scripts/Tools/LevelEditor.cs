@@ -171,6 +171,14 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
             Undo.RegisterCreatedObjectUndo(bg, "Instantiate Background");
         }
 
+        GameObject cv = null;
+        if (room.canvas != null)
+        {
+            cv = (GameObject)PrefabUtility.InstantiatePrefab(room.canvas, roomGo.transform);
+            cv.transform.position = roomBasePosition;
+            Undo.RegisterCreatedObjectUndo(cv, "Instantiate Canvas");
+        }
+        
         if (room.roomObjects != null)
         {
             foreach (ObjectItem obj in room.roomObjects)
@@ -182,6 +190,10 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
                     roomBasePosition.x + Mathf.Clamp(obj.position.x, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f),
                     roomBasePosition.y + Mathf.Clamp(obj.position.y, -cameraMoveValue.y / 2f, cameraMoveValue.y / 2f)
                 );
+                if (newObj.TryGetComponent<NPC>(out NPC component) && cv != null)
+                {
+                    component.SetSpeechBubble(cv.transform.GetChild(0));   // pas tres tres propre mais tant qu'on touche pas au canvas c'est ok
+                }
 
                 SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
                 if (sr != null) sr.sortingOrder = obj.layer + 1;
@@ -280,6 +292,9 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
             EditorGUILayout.Space(10);
             EditorGUILayout.LabelField("Background (Prefab)", EditorStyles.boldLabel);
             room.backGround = (GameObject)EditorGUILayout.ObjectField("Background (Prefab)", room.backGround, typeof(GameObject), false);
+            EditorGUILayout.Space(10);
+            EditorGUILayout.LabelField("Canvas (Prefab)", EditorStyles.boldLabel);
+            room.canvas = (GameObject)EditorGUILayout.ObjectField("Canvas (Prefab)", room.canvas, typeof(GameObject), false);
             EditorGUILayout.Space(10);
             EditorGUILayout.LabelField("Objets de la pièce (ObjectItem)", EditorStyles.boldLabel);
 

@@ -19,6 +19,7 @@ MonoBehaviour:
   - type: 1
     roomName: Couloir
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1300193702386794501, guid: 2864ea2bc79cf46459db9cd9430388d4, type: 3}
       layer: 1
@@ -32,6 +33,7 @@ MonoBehaviour:
   - type: 1
     roomName: Couloir
     backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: 890de514bf0f22d4d87949338e942928, type: 3}
       layer: 3
@@ -45,6 +47,7 @@ MonoBehaviour:
   - type: 2
     roomName: "Sc\xE8ne du crime"
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
     roomObjects:
     - prefab: {fileID: 1300193702386794501, guid: b72d172f72b5f99488760cd048470e39, type: 3}
       layer: 0
@@ -58,6 +61,7 @@ MonoBehaviour:
   - type: 3
     roomName: Chambre 1
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1300193702386794501, guid: 87848cd798bf2254ea493707ced8dd25, type: 3}
       layer: 0
@@ -75,6 +79,7 @@ MonoBehaviour:
   - type: 3
     roomName: Chambre 2
     backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: bd826fc1b0b65ae4a8ca09688f1a204b, type: 3}
       layer: 3
@@ -84,35 +89,42 @@ MonoBehaviour:
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
+    canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
