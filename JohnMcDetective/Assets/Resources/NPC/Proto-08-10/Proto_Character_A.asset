@@ -15,7 +15,7 @@ MonoBehaviour:
   <NpcType>k__BackingField: 0
   <RevealObjectType>k__BackingField: 0
   <NpcName>k__BackingField: A
-  <NpcBaseSprite>k__BackingField: {fileID: -8516092245539368963, guid: d5ee0e08ef029514f8e9cd9830a13a57, type: 3}
+  <NpcBaseSprite>k__BackingField: {fileID: 1050999059155139976, guid: d5cc9ffd89fa8724aad28ea5a5365f6d, type: 3}
   <NpcRevealedSprite>k__BackingField: {fileID: -8516092245539368963, guid: d5ee0e08ef029514f8e9cd9830a13a57, type: 3}
   <IsMurderer>k__BackingField: 0
   <VoiceLine>k__BackingField: "Je suis du m\xEAme type que <b>B</b>"

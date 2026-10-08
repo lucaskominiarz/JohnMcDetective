@@ -15,7 +15,7 @@ MonoBehaviour:
   <NpcType>k__BackingField: 2
   <RevealObjectType>k__BackingField: 0
   <NpcName>k__BackingField: C
-  <NpcBaseSprite>k__BackingField: {fileID: -3642673182287933931, guid: 1d304ec33136cfa4593e3b4c1cc8f365, type: 3}
+  <NpcBaseSprite>k__BackingField: {fileID: -993853791666229059, guid: 3e09984efe7065e4d8c09722d5f09eb6, type: 3}
   <NpcRevealedSprite>k__BackingField: {fileID: -3642673182287933931, guid: 1d304ec33136cfa4593e3b4c1cc8f365, type: 3}
   <IsMurderer>k__BackingField: 1
   <VoiceLine>k__BackingField: "Le suspect qui se trouve dans la <b>pi\xE8ce du tigre</b>
