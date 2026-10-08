@@ -26,9 +26,9 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 0, y: -1}
     - prefab: {fileID: 1513895650028354144, guid: b2685480079f6b243bb862cdf7f508bd, type: 3}
-      layer: 3
+      layer: 1
       layerSpacing: -1
-      position: {x: 1.24, y: -3}
+      position: {x: 1.24, y: -1}
     isLocked: 0
   - type: 1
     roomName: Couloir
@@ -36,13 +36,13 @@ MonoBehaviour:
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: 890de514bf0f22d4d87949338e942928, type: 3}
-      layer: 3
+      layer: 1
       layerSpacing: -1
-      position: {x: 1.42, y: -3}
+      position: {x: 1.42, y: -1}
     - prefab: {fileID: 1300193702386794501, guid: 93d2173b43121df4b8f6ee8298e2e369, type: 3}
-      layer: 5
-      layerSpacing: 0.7
-      position: {x: 0, y: 3.5}
+      layer: 1
+      layerSpacing: 0.2
+      position: {x: -1.34, y: 0.2}
     isLocked: 0
   - type: 2
     roomName: "Sc\xE8ne du crime"
@@ -68,13 +68,13 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 0, y: -0}
     - prefab: {fileID: 1513895650028354144, guid: 837a95d6bd5124e4ab805ebcacbcf6f1, type: 3}
-      layer: 3
+      layer: 1
       layerSpacing: -1
-      position: {x: 1.23, y: -3}
+      position: {x: 0.6, y: -1}
     - prefab: {fileID: 1300193702386794501, guid: cf8e458455738a54ab7597f1412dd948, type: 3}
       layer: 1
       layerSpacing: 4
-      position: {x: 0, y: 4}
+      position: {x: -0.95, y: 4}
     isLocked: 0
   - type: 3
     roomName: Chambre 2
@@ -82,9 +82,9 @@ MonoBehaviour:
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: bd826fc1b0b65ae4a8ca09688f1a204b, type: 3}
-      layer: 3
+      layer: 1
       layerSpacing: -1
-      position: {x: 1.27, y: -3}
+      position: {x: 1.27, y: -1}
     isLocked: 0
   - type: 0
     roomName: 

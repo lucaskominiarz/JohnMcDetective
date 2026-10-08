@@ -116,10 +116,10 @@ TextureImporter:
       name: SPR_Bust_CharaM2_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 94
         y: 0
-        width: 556
-        height: 1024
+        width: 825
+        height: 1369
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

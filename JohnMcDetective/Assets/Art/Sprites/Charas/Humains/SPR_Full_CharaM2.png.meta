@@ -5,15 +5,6 @@ TextureImporter:
   - first:
       213: -993853791666229059
     second: SPR_Full_CharaM2_0
-  - first:
-      213: -7423611926225812718
-    second: SPR_Full_CharaM2_1
-  - first:
-      213: 6672008268733859756
-    second: SPR_Full_CharaM2_2
-  - first:
-      213: 7716463433414670197
-    second: SPR_Full_CharaM2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SPR_Full_CharaM2_1
+      name: SPR_Full_CharaM2_0
       rect:
         serializedVersion: 2
-        x: 257
-        y: 309
-        width: 263
-        height: 525
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 12
+        y: 50
+        width: 492
+        height: 943
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21305faf8480af890800000000000000
-      internalID: -7423611926225812718
+      spriteID: db03f0dfd3f1532f0800000000000000
+      internalID: -993853791666229059
       vertices: []
       indices: 
       edges: []
@@ -147,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e8657a763f04d7b4ba9f0dcb06d97e04
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -158,9 +149,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       SPR_Full_CharaM2_0: -993853791666229059
-      SPR_Full_CharaM2_1: -7423611926225812718
-      SPR_Full_CharaM2_2: 6672008268733859756
-      SPR_Full_CharaM2_3: 7716463433414670197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

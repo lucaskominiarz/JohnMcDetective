@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -8852406179557801662
     second: SPR_Bust_CharaF2_0
+  - first:
+      213: 5174591277735318341
+    second: SPR_Bust_CharaF2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,10 +119,10 @@ TextureImporter:
       name: SPR_Bust_CharaF2_0
       rect:
         serializedVersion: 2
-        x: 38
-        y: 0
-        width: 538
-        height: 1018
+        x: 21
+        y: 654
+        width: 7
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,6 +133,28 @@ TextureImporter:
       bones: []
       spriteID: 2410cf35b7fe52580800000000000000
       internalID: -8852406179557801662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SPR_Bust_CharaF2_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 838
+        height: 1400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5439f37d957dfc740800000000000000
+      internalID: 5174591277735318341
       vertices: []
       indices: 
       edges: []
@@ -149,6 +174,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       SPR_Bust_CharaF2_0: -8852406179557801662
+      SPR_Bust_CharaF2_1: 5174591277735318341
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
