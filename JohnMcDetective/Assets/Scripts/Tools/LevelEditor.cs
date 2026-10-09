@@ -62,7 +62,8 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         EditorGUI.BeginChangeCheck();
         int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
         int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
-        targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ", targetMap.startPosition);
+        targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
+        targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -246,9 +247,11 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
             GUI.backgroundColor = Color.yellow;
         else if (room.IsEmpty)
             GUI.backgroundColor = new Color(0.3f, 0.3f, 0.3f);
+        else if(room.inSpiritWorld)
+            GUI.backgroundColor = new Color(0.8f, 0.6f, 1f);
         else
             GUI.backgroundColor = new Color(0.4f, 0.8f, 0.4f);
-
+        
         string label = room.IsEmpty ? $"[{x},{y}]\nVide" : $"[{x},{y}]\n{room.roomName}\n({room.type})";
 
         if (GUILayout.Button(label, GUILayout.Width(CellSize), GUILayout.Height(CellSize)))
@@ -287,6 +290,7 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         if (!room.IsEmpty)
         {
             room.roomName = EditorGUILayout.TextField("Nom de la pièce", room.roomName);
+            room.inSpiritWorld = EditorGUILayout.Toggle("Pièce monde des esprits", room.inSpiritWorld);
             room.isLocked = EditorGUILayout.Toggle("Pièce verrouillée", room.isLocked);
             
             EditorGUILayout.Space(10);

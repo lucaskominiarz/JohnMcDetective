@@ -27,6 +27,7 @@ public struct RoomData
     public GameObject canvas;
     public ObjectItem[] roomObjects;
     public bool isLocked;
+    public bool inSpiritWorld;
 
     public bool IsEmpty => type == RoomType.Empty;
 }
