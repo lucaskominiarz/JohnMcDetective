@@ -175,4 +175,9 @@ public class ScrollView : MonoBehaviour
 
         _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
     }
+
+    public void MoveCam(Vector2Int gridPos)
+    {
+        transform.position = new Vector3(gridPos.x * pageSize.x, gridPos.y * pageSize.y, transform.position.z);
+    }
 }

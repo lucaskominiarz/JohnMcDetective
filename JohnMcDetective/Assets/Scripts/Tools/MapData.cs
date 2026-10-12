@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMapData", menuName = "Map/Map Data")]
@@ -7,6 +8,7 @@ public class MapData : ScriptableObject
     public int gridHeight = 5;
     public Vector2Int startPosition = Vector2Int.zero;
     public Vector2Int spiritStartPosition = Vector2Int.zero;
+    public Dictionary<NPCType, int> entityCount ;
 
     [SerializeField] private RoomData[] rooms = new RoomData[25];
     public RoomData GetRoom(int x, int y)
