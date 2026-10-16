@@ -44,6 +44,11 @@ using TMPro;
         _baseColliderScale = _collider.size;
     }
 
+    public NPCType GetNpcType()
+    {
+        return npcData.NpcType;
+    }
+
     
     public void OnPointerClick(PointerEventData eventData)
     {

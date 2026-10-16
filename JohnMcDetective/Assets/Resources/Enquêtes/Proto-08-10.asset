@@ -93,7 +93,7 @@ MonoBehaviour:
     isLocked: 0
     inSpiritWorld: 0
   - type: 0
-    roomName: 
+    roomName: Spirit
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []

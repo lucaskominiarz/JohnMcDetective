@@ -194,11 +194,20 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
                 if (newObj.TryGetComponent<NPC>(out NPC component) && cv != null)
                 {
                     component.SetSpeechBubble(cv.transform.GetChild(0));   // pas tres tres propre mais tant qu'on touche pas au canvas c'est ok
+                    if (!targetMap.entityCount.ContainsKey(component.GetNpcType()))
+                    {
+                        targetMap.entityCount.Add(component.GetNpcType(), 0);
+                    }
+                    
+                    targetMap.entityCount[component.GetNpcType()] += 1;
+                }
+                else if (newObj.TryGetComponent<LockCode>(out LockCode lockComponent) && cv != null)// chut
+                {
+                    lockComponent.SetMapData(targetMap);
                 }
 
                 SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
                 if (sr != null) sr.sortingOrder = obj.layer + 1;
-
                 Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");
             }
         }
