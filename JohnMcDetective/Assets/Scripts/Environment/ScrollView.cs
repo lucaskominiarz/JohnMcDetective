@@ -19,6 +19,8 @@ public class ScrollView : MonoBehaviour
     private Vector2 _touchVelocity;
     private bool _isDragging = false;
 
+    private bool _canDrag = true;
+
     private Vector3 _startCamPos;
 
     private enum DragDirection { None, Horizontal, Vertical }
@@ -45,11 +47,12 @@ public class ScrollView : MonoBehaviour
 
     private void HandleTouchInput()
     {
-        if (DraggableItem.IsDraggingAnyItem)
+        if (DraggableItem.IsDraggingAnyItem || !_canDrag)
         {
             _isDragging = false;
             return;
         }
+        
 
         Pointer currentPointer = Pointer.current;
         if (currentPointer == null) return;
@@ -174,5 +177,10 @@ public class ScrollView : MonoBehaviour
         }
 
         _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
+    }
+
+    public void ChangeCanDragState(int newState)
+    {
+        _canDrag = newState != 0;
     }
 }
