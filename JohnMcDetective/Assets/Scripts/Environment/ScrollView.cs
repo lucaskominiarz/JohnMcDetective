@@ -185,14 +185,18 @@ public class ScrollView : MonoBehaviour
     {
         Vector3 newPos;
         if (_isInOverWorld)
-            newPos = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y, transform.position.z);
+            newPos = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y,
+                transform.position.z);
         else
-            newPos = new Vector3(mapData.startPosition.x * pageSize.x, mapData.startPosition.y * pageSize.y, transform.position.z);
+            newPos = new Vector3(mapData.startPosition.x * pageSize.x, mapData.startPosition.y * pageSize.y,
+                transform.position.z);
         _targetPosition = newPos;
         transform.position = newPos;
         _lastScreenPos = newPos;
         _startCamPos = newPos;
         _isInOverWorld = !_isInOverWorld;
+    }
+
     public void ChangeCanDragState(int newState)
     {
         _canDrag = newState != 0;
