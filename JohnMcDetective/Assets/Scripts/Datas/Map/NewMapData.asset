@@ -15,6 +15,7 @@ MonoBehaviour:
   gridWidth: 5
   gridHeight: 5
   startPosition: {x: 0, y: 0}
+  spiritStartPosition: {x: 0, y: 0}
   rooms:
   - type: 2
     roomName: ffeef
@@ -30,6 +31,7 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: -1.01, y: -1}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 3
     roomName: fezeterz
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
@@ -44,66 +46,77 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 0.56, y: -0}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 2
     roomName: Crime
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 3
     roomName: TestRoom
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
@@ -118,75 +131,88 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: -0.6, y: -1}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
-  - type: 0
+    inSpiritWorld: 0
+  - type: 1
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 1
