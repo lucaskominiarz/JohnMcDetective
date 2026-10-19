@@ -15,6 +15,7 @@ MonoBehaviour:
   gridWidth: 6
   gridHeight: 2
   startPosition: {x: 2, y: 0}
+  spiritStartPosition: {x: 0, y: 0}
   rooms:
   - type: 1
     roomName: Couloir
@@ -30,6 +31,7 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 1.24, y: -1}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 1
     roomName: Couloir
     backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
@@ -44,6 +46,7 @@ MonoBehaviour:
       layerSpacing: 0.2
       position: {x: -1.34, y: 0.2}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 2
     roomName: "Sc\xE8ne du crime"
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
@@ -58,6 +61,7 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 0, y: -1}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 3
     roomName: Chambre 1
     backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
@@ -76,6 +80,7 @@ MonoBehaviour:
       layerSpacing: 4
       position: {x: -0.95, y: 4}
     isLocked: 0
+    inSpiritWorld: 0
   - type: 3
     roomName: Chambre 2
     backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
@@ -86,45 +91,53 @@ MonoBehaviour:
       layerSpacing: -1
       position: {x: 1.27, y: -1}
     isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: Spirit
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
+    inSpiritWorld: 0
   - type: 0
     roomName: 
     backGround: {fileID: 0}
     canvas: {fileID: 0}
     roomObjects: []
     isLocked: 0
-  - type: 0
-    roomName: 
-    backGround: {fileID: 0}
-    canvas: {fileID: 0}
-    roomObjects: []
-    isLocked: 0
+    inSpiritWorld: 0

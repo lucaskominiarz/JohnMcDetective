@@ -198,7 +198,6 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
 
                 SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
                 if (sr != null) sr.sortingOrder = obj.layer + 1;
-
                 Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");
             }
         }
