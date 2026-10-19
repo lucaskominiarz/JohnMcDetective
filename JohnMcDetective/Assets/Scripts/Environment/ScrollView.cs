@@ -23,6 +23,8 @@ public class ScrollView : MonoBehaviour
 
     private Vector3 _startCamPos;
 
+    private bool _isInOverWorld = true;
+
     private enum DragDirection { None, Horizontal, Vertical }
     private DragDirection _currentDragDirection = DragDirection.None;
 
@@ -177,6 +179,22 @@ public class ScrollView : MonoBehaviour
         }
 
         _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
+    }
+
+    public void ChangeWorld()
+    {
+        Vector3 newPos;
+        if (_isInOverWorld)
+            newPos = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y,
+                transform.position.z);
+        else
+            newPos = new Vector3(mapData.startPosition.x * pageSize.x, mapData.startPosition.y * pageSize.y,
+                transform.position.z);
+        _targetPosition = newPos;
+        transform.position = newPos;
+        _lastScreenPos = newPos;
+        _startCamPos = newPos;
+        _isInOverWorld = !_isInOverWorld;
     }
 
     public void ChangeCanDragState(int newState)
