@@ -8,30 +8,26 @@ using UnityEngine.EventSystems;
 public class LockCode : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private TMP_Text[] texts;
-    [SerializeField] private MapData _mapData;
-    private Dictionary<NPCType, int> _code;
+    [SerializeField] private List<NPCType> npcTypes;
+    [SerializeField] private List<int> npcNumbers;
+    private Dictionary<NPCType, int> _code = new Dictionary<NPCType, int>();
 
     private bool _isClicked;
     private bool _isOpen;
 
     private void Start()
     {
-        foreach (NPCType npcType in _mapData.entityCount.Keys)
+        foreach (NPCType npcType in npcTypes)
         {
-            _code[npcType] = 0;
+            _code.TryAdd(npcType, 0);
         }
-    }
-
-    public void SetMapData(MapData newMapDatas)
-    {
-        _mapData = newMapDatas;
     }
 
     bool CheckCombination()
     {
-        foreach (NPCType npcType in _mapData.entityCount.Keys)
+        for (int i = 0; i < npcTypes.Count; i++)
         {
-            if (_code[npcType] != _mapData.entityCount[npcType])
+            if (_code[npcTypes[i]] != npcNumbers[i])
                 return false;
         }
         return true;
@@ -39,24 +35,39 @@ public class LockCode : MonoBehaviour, IPointerClickHandler
 
     public void ChangeCombination(NPCType type, int value)
     {
+        int index = 0;
+        for (int i = 0; i < npcTypes.Count; i++)
+        {
+            if (npcTypes[i] == type)
+            {
+                index = i;
+            }
+        }
         _code[type] += value;
-        texts[(int)type].text = _code[type].ToString();
+        texts[index].text = _code[type].ToString();
         if (CheckCombination())
             OpenLock();
     }
 
     void OpenLock()
     {
+        _isOpen = true;
         // lancer anim
     }
 
     void ChangeWorld()
     {
-        Camera.main.GetComponent<ScrollView>().MoveCam(_mapData.spiritStartPosition) ;
+        Camera.main.GetComponent<ScrollView>().ChangeWorld();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (_isOpen) // a enlever
+        {
+            ChangeWorld();
+            return;
+        }
+        /*
         if (_isClicked)
         {
             if (_isOpen)
@@ -64,17 +75,15 @@ public class LockCode : MonoBehaviour, IPointerClickHandler
                 ChangeWorld();
                 return;
             }
-            transform.DOScale(new Vector3(.8f, .8f, .8f), 05f);// changer
             // scale diminuer
             
             
         }
         else
         {
-            transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 05f); // changer
             // scale augmenter
         }
-
+    */
         _isClicked = !_isClicked;
     }
 }
