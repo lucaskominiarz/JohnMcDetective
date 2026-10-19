@@ -47,6 +47,8 @@ public class LockCode : MonoBehaviour, IPointerClickHandler
         texts[index].text = _code[type].ToString();
         if (CheckCombination())
             OpenLock();
+        else
+            _isOpen = false;
     }
 
     void OpenLock()
