@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
   <NpcType>k__BackingField: 2
   <RevealObjectType>k__BackingField: 0
-  <NpcName>k__BackingField: 
+  <NpcName>k__BackingField: Lou
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: "Je ne suis pas du m\xEAme type que nicolas"
+  <VoiceLine>k__BackingField: "Je ne suis pas du m\xEAme type que <b>Nicolas<b>"
   <VoiceLineAlt>k__BackingField: 

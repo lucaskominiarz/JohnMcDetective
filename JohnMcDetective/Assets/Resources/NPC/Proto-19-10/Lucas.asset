@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
   <NpcType>k__BackingField: 2
   <RevealObjectType>k__BackingField: 0
-  <NpcName>k__BackingField: 
+  <NpcName>k__BackingField: Lucas
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 1
-  <VoiceLine>k__BackingField: Il y a un Bai Ze entre Lou et Eli
+  <VoiceLine>k__BackingField: Il y a un <b>Bai Ze<b> entre Lou et Eli
   <VoiceLineAlt>k__BackingField: 

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
   <NpcType>k__BackingField: 1
   <RevealObjectType>k__BackingField: 0
-  <NpcName>k__BackingField: 
+  <NpcName>k__BackingField: Eli
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: L'humain est dans la salle du Dragon
+  <VoiceLine>k__BackingField: L'humain est dans la <b>salle du Tigre<b>
   <VoiceLineAlt>k__BackingField: 
