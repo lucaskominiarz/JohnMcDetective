@@ -15,6 +15,7 @@ public struct ObjectItem
     public GameObject prefab;
     public int layer;
     public float positionX;
+    public NPCScriptable npcData;
 }
 
 [Serializable]

@@ -33,7 +33,6 @@ public class MapData : ScriptableObject
                 }
             }
         }
-        // Valeur par défaut si non configuré (ex: 1 unité par layer)
         return layer * 1.0f;
     }
 

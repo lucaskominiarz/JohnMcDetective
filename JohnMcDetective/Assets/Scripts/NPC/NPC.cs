@@ -49,6 +49,11 @@ using TMPro;
         return npcData.NpcType;
     }
 
+    public void SetNpcDatas(NPCScriptable newNpcData)
+    {
+        npcData = newNpcData;
+    }
+
     
     public void OnPointerClick(PointerEventData eventData)
     {
