@@ -2,13 +2,15 @@
 
 using UnityEditor;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
+public class LevelEditor : EditorWindow
 {
     private MapData targetMap;
     private Vector2 scrollPosition;
+    private Vector2 objectsScrollPosition; // Scrollbar pour la liste des objets
     private Vector2 selectedCell = new Vector2(-1, -1);
-    private  Vector2 cameraMoveValue =  new Vector2(4.5f, 10f);
+    private Vector2 cameraMoveValue = new Vector2(4.5f, 10f);
     
     private const float CellSize = 75f;
     private const float CellPadding = 4f;
@@ -65,9 +67,33 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
         targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
 
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
+        
+        if (targetMap.globalLayers == null)
+            targetMap.globalLayers = new List<GlobalLayerData>();
+
+        for (int i = 0; i < targetMap.globalLayers.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
+            targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
+            if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
+            {
+                targetMap.globalLayers.RemoveAt(i);
+                break;
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        if (GUILayout.Button("+ Ajouter un Layer Global"))
+        {
+            targetMap.globalLayers.Add(new GlobalLayerData { layer = targetMap.globalLayers.Count, yPosition = targetMap.globalLayers.Count * 1.5f });
+        }
+
         if (EditorGUI.EndChangeCheck())
         {
-            Undo.RecordObject(targetMap, "Redimensionner la grille");
+            Undo.RecordObject(targetMap, "Redimensionner la grille ou modifier les layers");
             targetMap.ResizeGrid(newWidth, newHeight);
         }
     }
@@ -95,11 +121,11 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         EditorGUILayout.BeginHorizontal();
         bool hasSelection = selectedCell.x >= 0 && selectedCell.y >= 0;
         GUI.enabled = hasSelection;
-        if (GUILayout.Button(hasSelection ? $"Générer Séléction [{selectedCell.x}, {selectedCell.y}]" : "Générer la salle", GUILayout.Height(25)))
+        if (GUILayout.Button(hasSelection ? $"Générer Sélection [{selectedCell.x}, {selectedCell.y}]" : "Générer la salle", GUILayout.Height(25)))
         {
             GenerateRoomInScene((int)selectedCell.x, (int)selectedCell.y);
         }
-        if (GUILayout.Button(hasSelection ? $"Effacer Séléction [{selectedCell.x}, {selectedCell.y}]" : "Effacer la salle", GUILayout.Height(25)))
+        if (GUILayout.Button(hasSelection ? $"Effacer Sélection [{selectedCell.x}, {selectedCell.y}]" : "Effacer la salle", GUILayout.Height(25)))
         {
             ClearRoomInScene((int)selectedCell.x, (int)selectedCell.y);
         }
@@ -156,7 +182,6 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         Transform parent = GetOrCreateRoomsParent();
         string roomName = $"Room_{x}_{y}";
        
-
         ClearRoomInScene(x, y);
 
         GameObject roomGo = new GameObject(roomName);
@@ -186,14 +211,17 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
             {
                 if (obj.prefab == null) continue;
 
+                float globalY = targetMap.GetLayerY(obj.layer);
+
                 GameObject newObj = (GameObject)PrefabUtility.InstantiatePrefab(obj.prefab, roomGo.transform);
                 newObj.transform.position = new Vector2(
-                    roomBasePosition.x + Mathf.Clamp(obj.position.x, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f),
-                    roomBasePosition.y + Mathf.Clamp(obj.position.y, -cameraMoveValue.y / 2f, cameraMoveValue.y / 2f)
+                    roomBasePosition.x + Mathf.Clamp(obj.positionX, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f),
+                    roomBasePosition.y + globalY
                 );
+
                 if (newObj.TryGetComponent<NPC>(out NPC component) && cv != null)
                 {
-                    component.SetSpeechBubble(cv.transform.GetChild(0));   // pas tres tres propre mais tant qu'on touche pas au canvas c'est ok
+                    component.SetSpeechBubble(cv.transform.GetChild(0));
                 }
 
                 SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
@@ -256,6 +284,7 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
         if (GUILayout.Button(label, GUILayout.Width(CellSize), GUILayout.Height(CellSize)))
         {
             selectedCell = new Vector2(x, y);
+            objectsScrollPosition = Vector2.zero; // Remet le scroll des objets en haut lors du changement de salle
             GUI.FocusControl(null);
         }
 
@@ -306,6 +335,10 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
                 room.roomObjects = new ObjectItem[0];
             }
 
+            // --- ZONE SCROLLABLE POUR LES OBJETS ---
+            objectsScrollPosition = EditorGUILayout.BeginScrollView(objectsScrollPosition, GUILayout.Height(250));
+
+            int indexToRemove = -1;
             for (int i = 0; i < room.roomObjects.Length; i++)
             {
                 EditorGUILayout.BeginVertical("box");
@@ -314,25 +347,30 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
                 EditorGUILayout.LabelField($"Objet {i + 1}", EditorStyles.boldLabel);
                 if (GUILayout.Button("-", GUILayout.Width(25)))
                 {
-                    var list = new System.Collections.Generic.List<ObjectItem>(room.roomObjects);
-                    list.RemoveAt(i);
-                    room.roomObjects = list.ToArray();
-                    EditorGUILayout.EndHorizontal();
-                    EditorGUILayout.EndVertical();
-                    break;
+                    indexToRemove = i;
                 }
                 EditorGUILayout.EndHorizontal();
 
                 room.roomObjects[i].prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", room.roomObjects[i].prefab, typeof(GameObject), false);
                 room.roomObjects[i].layer = EditorGUILayout.IntField("Layer", room.roomObjects[i].layer);
-                room.roomObjects[i].layerSpacing = EditorGUILayout.FloatField("Multiplicateur Y", room.roomObjects[i].layerSpacing);
-                room.roomObjects[i].position.y = room.roomObjects[i].layer * room.roomObjects[i].layerSpacing;
-                room.roomObjects[i].position.x = EditorGUILayout.FloatField("Position X", room.roomObjects[i].position.x);
+                room.roomObjects[i].positionX = EditorGUILayout.FloatField("Position X", room.roomObjects[i].positionX);
+
+                float calculatedY = targetMap.GetLayerY(room.roomObjects[i].layer);
                 EditorGUI.BeginDisabledGroup(true);
-                EditorGUILayout.Vector2Field("Position Finale (X, Y)", room.roomObjects[i].position);
+                EditorGUILayout.Vector2Field("Position Finale (X, Y)", new Vector2(room.roomObjects[i].positionX, calculatedY));
                 EditorGUI.EndDisabledGroup();
 
                 EditorGUILayout.EndVertical();
+            }
+
+            EditorGUILayout.EndScrollView();
+            // ----------------------------------------
+
+            if (indexToRemove != -1)
+            {
+                var list = new System.Collections.Generic.List<ObjectItem>(room.roomObjects);
+                list.RemoveAt(indexToRemove);
+                room.roomObjects = list.ToArray();
             }
 
             if (GUILayout.Button("+ Ajouter un Objet"))
@@ -341,8 +379,7 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
                 list.Add(new ObjectItem 
                 { 
                     layer = 1,
-                    layerSpacing = 2.5f,
-                    position = new Vector2(0f, 2.5f)
+                    positionX = 0f
                 });
                 
                 room.roomObjects = list.ToArray();
@@ -366,80 +403,84 @@ public class LevelEditor : EditorWindow // un peu le bordel mais ca marche
     }
 
     private void DrawPreviewArea()
+{
+    float screenWidth = 180f;
+    float screenHeight = screenWidth * (cameraMoveValue.y / cameraMoveValue.x);
+
+    EditorGUILayout.BeginVertical("box", GUILayout.Width(screenWidth + 15f));
+    EditorGUILayout.LabelField("Aperçu Écran", EditorStyles.boldLabel);
+
+    int posX = (int)selectedCell.x;
+    int posY = (int)selectedCell.y;
+
+    if (posX < 0 || posX >= targetMap.gridWidth || posY < 0 || posY >= targetMap.gridHeight)
     {
-        float screenWidth = 180f;
-        float screenHeight = screenWidth * (10f / 4.5f);
+        EditorGUILayout.EndVertical();
+        return;
+    }
 
-        EditorGUILayout.BeginVertical("box", GUILayout.Width(screenWidth + 15f));
-        EditorGUILayout.LabelField("Aperçu Écran", EditorStyles.boldLabel);
+    RoomData room = targetMap.GetRoom(posX, posY);
+    Rect previewRect = GUILayoutUtility.GetRect(screenWidth, screenHeight);
+    GUI.BeginGroup(previewRect);
+    Rect localRect = new Rect(0, 0, previewRect.width, previewRect.height);
+    
+    EditorGUI.DrawRect(localRect, new Color(0.15f, 0.15f, 0.15f, 1f));
 
-        int posX = (int)selectedCell.x;
-        int posY = (int)selectedCell.y;
+    if (room.backGround != null)
+    {
+        DrawPrefabPreview(localRect, room.backGround, true);
+    }
+    Handles.color = new Color(0.4f, 0.4f, 0.4f, 0.5f);
+    Vector3 localPos = previewRect.position;
+    Handles.DrawLine(new Vector3(localRect.width / 2f, 0), new Vector3(localRect.width / 2f, localRect.height));
+    Handles.DrawLine(new Vector3(0, localRect.height / 2f), new Vector3(localRect.width, localRect.height / 2f));
 
-        if (posX < 0 || posX >= targetMap.gridWidth || posY < 0 || posY >= targetMap.gridHeight)
+    if (!room.IsEmpty && room.roomObjects != null)
+    {
+        float halfWidth = cameraMoveValue.x / 2f;
+        float halfHeight = cameraMoveValue.y / 2f;
+
+        foreach (var item in room.roomObjects)
         {
-            EditorGUILayout.EndVertical();
-            return;
-        }
+            float globalY = targetMap.GetLayerY(item.layer);
+            float normalizedX = (item.positionX + halfWidth) / cameraMoveValue.x;
+            float normalizedY = (halfHeight - globalY) / cameraMoveValue.y;
 
-        RoomData room = targetMap.GetRoom(posX, posY);
+            float pixelX = normalizedX * localRect.width;
+            float pixelY = normalizedY * localRect.height;
 
-        Rect previewRect = GUILayoutUtility.GetRect(screenWidth, screenHeight);
-        
-        EditorGUI.DrawRect(previewRect, new Color(0.15f, 0.15f, 0.15f, 1f));
+            float objWidth = 36f;
+            float objHeight = 36f;
 
-        if (room.backGround != null)
-        {
-            DrawPrefabPreview(previewRect, room.backGround, true);
-        }
-
-        Handles.color = new Color(0.4f, 0.4f, 0.4f, 0.5f);
-        Handles.DrawLine(new Vector3(previewRect.x + previewRect.width / 2f, previewRect.y), new Vector3(previewRect.x + previewRect.width / 2f, previewRect.yMax));
-        Handles.DrawLine(new Vector3(previewRect.x, previewRect.y + previewRect.height / 2f), new Vector3(previewRect.xMax, previewRect.y + previewRect.height / 2f));
-
-        if (!room.IsEmpty && room.roomObjects != null)
-        {
-            float ppu = previewRect.width / 4.5f;
-
-            foreach (var item in room.roomObjects)
+            if (item.prefab != null)
             {
-                float normalizedX = (item.position.x + 2.25f) / 4.5f;
-                float normalizedY = (10f - (item.position.y + 5f)) / 10f;
-
-                float pixelX = previewRect.x + (normalizedX * previewRect.width);
-                float pixelY = previewRect.y + (normalizedY * previewRect.height);
-
-                float objWidth = 36f;
-                float objHeight = 36f;
-
-                if (item.prefab != null)
+                SpriteRenderer objSr = item.prefab.GetComponentInChildren<SpriteRenderer>();
+                if (objSr != null && objSr.sprite != null)
                 {
-                    SpriteRenderer objSr = item.prefab.GetComponentInChildren<SpriteRenderer>();
-                    if (objSr != null && objSr.sprite != null)
-                    {
-                        Vector3 scale = item.prefab.transform.localScale;
-                        objWidth = objSr.sprite.bounds.size.x * scale.x * ppu;
-                        objHeight = objSr.sprite.bounds.size.y * scale.y * ppu;
-                    }
-
-                    if (objWidth < 4f) objWidth = 12f;
-                    if (objHeight < 4f) objHeight = 12f;
-
-                    Rect objRect = new Rect(pixelX - objWidth / 2f, pixelY - objHeight / 2f, objWidth, objHeight);
-                    DrawPrefabPreview(objRect, item.prefab, false);
+                    Vector3 scale = item.prefab.transform.localScale;
+                    objWidth = objSr.sprite.bounds.size.x * scale.x * (localRect.width / cameraMoveValue.x);
+                    objHeight = objSr.sprite.bounds.size.y * scale.y * (localRect.height / cameraMoveValue.y);
                 }
-                else
-                {
-                    DrawDefaultObjectMarker(pixelX, pixelY, "Null", 12f, 12f);
-                }
+
+                if (objWidth < 4f) objWidth = 12f;
+                if (objHeight < 4f) objHeight = 12f;
+
+                Rect objRect = new Rect(pixelX - objWidth / 2f, pixelY - objHeight / 2f, objWidth, objHeight);
+                DrawPrefabPreview(objRect, item.prefab, false);
+            }
+            else
+            {
+                DrawDefaultObjectMarker(pixelX, pixelY, "Null", 12f, 12f);
             }
         }
-
-        Handles.color = Color.gray;
-        Handles.DrawWireCube(previewRect.center, previewRect.size);
-
-        EditorGUILayout.EndVertical();
     }
+
+    Handles.color = Color.gray;
+    Handles.DrawWireCube(localRect.center, localRect.size);
+
+    GUI.EndGroup();
+    EditorGUILayout.EndVertical();
+}
 
     private void DrawPrefabPreview(Rect rect, GameObject prefab, bool isBackground)
     {

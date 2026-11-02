@@ -14,8 +14,7 @@ public struct ObjectItem
 {
     public GameObject prefab;
     public int layer;
-    public float layerSpacing;
-    public Vector2 position;
+    public float positionX;
 }
 
 [Serializable]

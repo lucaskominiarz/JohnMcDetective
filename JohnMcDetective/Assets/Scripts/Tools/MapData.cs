@@ -1,5 +1,13 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+[Serializable]
+public class GlobalLayerData
+{
+    public int layer;
+    public float yPosition;
+}
 
 [CreateAssetMenu(fileName = "NewMapData", menuName = "Map/Map Data")]
 public class MapData : ScriptableObject
@@ -9,7 +17,26 @@ public class MapData : ScriptableObject
     public Vector2Int startPosition = Vector2Int.zero;
     public Vector2Int spiritStartPosition = Vector2Int.zero;
 
+    public List<GlobalLayerData> globalLayers = new List<GlobalLayerData>();
+
     [SerializeField] private RoomData[] rooms = new RoomData[25];
+
+    public float GetLayerY(int layer)
+    {
+        if (globalLayers != null)
+        {
+            foreach (var gl in globalLayers)
+            {
+                if (gl.layer == layer)
+                {
+                    return gl.yPosition;
+                }
+            }
+        }
+        // Valeur par défaut si non configuré (ex: 1 unité par layer)
+        return layer * 1.0f;
+    }
+
     public RoomData GetRoom(int x, int y)
     {
         if (!IsValidIndex(x, y)) return default;

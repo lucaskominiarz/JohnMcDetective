@@ -16,6 +16,7 @@ MonoBehaviour:
   gridHeight: 5
   startPosition: {x: 0, y: 0}
   spiritStartPosition: {x: 0, y: 0}
+  globalLayers: []
   rooms:
   - type: 2
     roomName: ffeef
@@ -24,12 +25,10 @@ MonoBehaviour:
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 0
-      layerSpacing: -1
-      position: {x: 0.12, y: -0}
+      positionX: 0
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 1
-      layerSpacing: -1
-      position: {x: -1.01, y: -1}
+      positionX: 0
     isLocked: 0
     inSpiritWorld: 0
   - type: 3
@@ -39,12 +38,10 @@ MonoBehaviour:
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 1
-      layerSpacing: -1
-      position: {x: 1.38, y: -1}
+      positionX: 0
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 0
-      layerSpacing: -1
-      position: {x: 0.56, y: -0}
+      positionX: 0
     isLocked: 0
     inSpiritWorld: 0
   - type: 0
@@ -124,12 +121,10 @@ MonoBehaviour:
     roomObjects:
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 0
-      layerSpacing: 0
-      position: {x: 1.1, y: 0}
+      positionX: 0
     - prefab: {fileID: 3116487571102460991, guid: 7527e2424e64bcc4686dde19ee308840, type: 3}
       layer: 1
-      layerSpacing: -1
-      position: {x: -0.6, y: -1}
+      positionX: 0
     isLocked: 0
     inSpiritWorld: 0
   - type: 0
