@@ -15,7 +15,7 @@ MonoBehaviour:
   gridWidth: 5
   gridHeight: 5
   startPosition: {x: 0, y: 0}
-  spiritStartPosition: {x: 0, y: 0}
+  spiritStartPosition: {x: 2, y: 4}
   globalLayers: []
   rooms:
   - type: 0
@@ -111,6 +111,10 @@ MonoBehaviour:
     - prefab: {fileID: 1300193702386794501, guid: 7f76ef39c7f22be4e9936e5c59e91680, type: 3}
       layer: 0
       positionX: -0.026
+      npcData: {fileID: 0}
+    - prefab: {fileID: 9213077855457971279, guid: 18ff84e6bcf2fbf4b9a385a52232e025, type: 3}
+      layer: 3
+      positionX: 0
       npcData: {fileID: 0}
     isLocked: 0
     inSpiritWorld: 0
