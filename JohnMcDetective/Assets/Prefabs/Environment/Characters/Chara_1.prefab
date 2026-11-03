@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3011770944448541003}
   - component: {fileID: -6845013240418512522}
   m_Layer: 0
-  m_Name: Proto_Chara
+  m_Name: Chara_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c36ef7706e1fabd45b79ebc79f058ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
-  npcData: {fileID: 11400000, guid: fe7bc84fb45cc514ebbf39b08c888561, type: 2}
+  npcData: {fileID: 11400000, guid: 96bb287d584ddd14fb20db50e806ace1, type: 2}
   spriteRenderer: {fileID: 3065493834084812833}
   speechBubble: {fileID: 0}
   tweenDuration: 0.5

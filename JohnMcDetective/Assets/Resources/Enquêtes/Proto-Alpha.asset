@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e022610ea8f58574f8e415605717541b, type: 3}
+  m_Name: Proto-Alpha
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  gridWidth: 5
+  gridHeight: 5
+  startPosition: {x: 0, y: 0}
+  spiritStartPosition: {x: 0, y: 0}
+  globalLayers: []
+  rooms:
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Chambre
+    backGround: {fileID: 5740862254468283520, guid: 1a269ec2d6ed43742996b7948a519638, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: b2685480079f6b243bb862cdf7f508bd, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: fbc6816740e4c8e43bba6f388ac2e1a1, type: 2}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 1
+    roomName: Salon 2
+    backGround: {fileID: 5740862254468283520, guid: b99f220b7957f394fb3a7a1d70a2532d, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 837a95d6bd5124e4ab805ebcacbcf6f1, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 7264f9bdbbbbb1f468f02120006749f8, type: 2}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Salle de bain
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 7f76ef39c7f22be4e9936e5c59e91680, type: 3}
+      layer: 0
+      positionX: -0.026
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Salon
+    backGround: {fileID: 5740862254468283520, guid: 59e934bea2e3f8f40a4ffb8c9fb9560b, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 96bb287d584ddd14fb20db50e806ace1, type: 2}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Jardin
+    backGround: {fileID: 5740862254468283520, guid: 3953035680bcc5c47851bcf403dd235c, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 890de514bf0f22d4d87949338e942928, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: efda10fde25f0f84aada1263b3a1be5d, type: 2}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: Esprits
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 3
+    roomName: Salon des esprits
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 1
+  - type: 3
+    roomName: Chambre des esprits
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 1
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0

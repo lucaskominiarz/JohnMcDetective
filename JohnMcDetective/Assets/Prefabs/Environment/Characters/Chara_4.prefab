@@ -27,10 +27,10 @@ PrefabInstance:
     - target: {fileID: -3011770944448541003, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: npcData
       value: 
-      objectReference: {fileID: 11400000, guid: 5eed21cd8d92179478b563f548dbbc7a, type: 2}
+      objectReference: {fileID: 11400000, guid: 7264f9bdbbbbb1f468f02120006749f8, type: 2}
     - target: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Name
-      value: Proto_Full_CharaM2
+      value: Chara_4
       objectReference: {fileID: 0}
     - target: {fileID: 2530163890455922258, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Sprite
@@ -111,59 +111,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5497586244023892100}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d93598690967cae43aa833493389c8ea, type: 3}
---- !u!1 &1513895650028354144 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
-  m_PrefabInstance: {fileID: 507014885046352485}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &5497586244023892100
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513895650028354144}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 2.625}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.92, y: 9.43}
-    newSize: {x: 4.92, y: 9.43}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 2.63, y: 5.25}
-  m_EdgeRadius: 0
