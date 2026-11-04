@@ -27,10 +27,10 @@ PrefabInstance:
     - target: {fileID: -3011770944448541003, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: npcData
       value: 
-      objectReference: {fileID: 11400000, guid: 7264f9bdbbbbb1f468f02120006749f8, type: 2}
+      objectReference: {fileID: 11400000, guid: 704c785a76ebf0042b1afdf2e7a68823, type: 2}
     - target: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Name
-      value: Chara_4
+      value: Mei_2
       objectReference: {fileID: 0}
     - target: {fileID: 2530163890455922258, guid: d93598690967cae43aa833493389c8ea, type: 3}
       propertyPath: m_Sprite

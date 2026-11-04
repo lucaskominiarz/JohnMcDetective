@@ -193,25 +193,37 @@ MonoBehaviour:
     roomObjects: []
     isLocked: 0
     inSpiritWorld: 0
-  - type: 0
-    roomName: 
-    backGround: {fileID: 0}
-    canvas: {fileID: 0}
-    roomObjects: []
+  - type: 1
+    roomName: Couloir des esprits
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 20c153d765ec33b4aa1bb333068c3ed0, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 704c785a76ebf0042b1afdf2e7a68823, type: 2}
     isLocked: 0
-    inSpiritWorld: 0
+    inSpiritWorld: 1
   - type: 3
     roomName: Salon des esprits
     backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
-    canvas: {fileID: 0}
-    roomObjects: []
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: de5b0a2772f24b940a236d42619ed0fc, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 26818e1073302374c8b50bc9b124929c, type: 2}
     isLocked: 0
     inSpiritWorld: 1
   - type: 3
     roomName: Chambre des esprits
     backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
-    canvas: {fileID: 0}
-    roomObjects: []
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 4e465433193f1234c80e813bc8fe41e3, type: 3}
+      layer: 1
+      positionX: 1.457
+      npcData: {fileID: 11400000, guid: 50a04dae8d190e14582caecff380885a, type: 2}
     isLocked: 0
     inSpiritWorld: 1
   - type: 0
