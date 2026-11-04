@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
   m_Name: Suspect 4 (coupable)
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
-  <NpcType>k__BackingField: 0
+  <NpcType>k__BackingField: 2
   <RevealObjectType>k__BackingField: 0
-  <NpcName>k__BackingField: 
+  <NpcName>k__BackingField: Wang
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 1
-  <VoiceLine>k__BackingField: 
+  <VoiceLine>k__BackingField: Il y a un <b>Esprit-Protecteur<b> parmis Yin et Chen
   <VoiceLineAlt>k__BackingField: 

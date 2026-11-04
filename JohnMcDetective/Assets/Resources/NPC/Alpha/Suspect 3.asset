@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
   m_Name: Suspect 3
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
-  <NpcType>k__BackingField: 0
+  <NpcType>k__BackingField: 2
   <RevealObjectType>k__BackingField: 0
-  <NpcName>k__BackingField: 
+  <NpcName>k__BackingField: Chen
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: 
+  <VoiceLine>k__BackingField: "Je ne suis pas du m\xEAme type que <b>Hua<b>"
   <VoiceLineAlt>k__BackingField: 
