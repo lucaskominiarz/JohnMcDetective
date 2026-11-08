@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 2
   valueChange: 1
 --- !u!60 &5626848030417155325
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 0
   valueChange: -1
 --- !u!1 &433914957903284354
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 3
   valueChange: -1
 --- !u!1 &2540483222534748788
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 3
   valueChange: 1
 --- !u!60 &6200229817625999077
@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 2
   valueChange: -1
 --- !u!1 &3044630219907838644
@@ -1574,8 +1574,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5869502487995776790}
   - component: {fileID: 6101568989226408727}
-  - component: {fileID: 8875148356493944532}
-  - component: {fileID: 6963547651885071121}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -1657,71 +1655,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!61 &8875148356493944532
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842573851972324895}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: -0.020456314, y: -7.5263596}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.38, y: 18.82}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 6.1130238, y: 1.6544704}
-  m_EdgeRadius: 0
---- !u!114 &6963547651885071121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4842573851972324895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6e9728f7eb10864b9507bd972daf735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LockCode
-  texts:
-  - {fileID: 7204497202570492864}
-  - {fileID: 1725607205678007482}
-  - {fileID: 579512921242241331}
-  - {fileID: 6830387087736893491}
-  npcTypes: 01000000020000000300000000000000
-  npcNumbers: 01000000020000000000000001000000
 --- !u!1 &5075929147282012825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 1
   valueChange: -1
 --- !u!1 &6183679557856101617
@@ -3365,7 +3298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 0
   valueChange: 1
 --- !u!60 &9165998125951897106
@@ -3523,7 +3456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac82133cc1afbc438a85d5aa11e8bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickableButton
-  lockCodeReference: {fileID: 6963547651885071121}
+  lockCodeReference: {fileID: 0}
   npcType: 1
   valueChange: 1
 --- !u!60 &4776418838962221567
