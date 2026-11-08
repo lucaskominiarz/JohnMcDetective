@@ -43,7 +43,7 @@ public class LockCode : MonoBehaviour, IPointerClickHandler
                 index = i;
             }
         }
-        _code[type] += value;
+        _code[type] = Mathf.Max(0,_code[type]+value);
         texts[index].text = _code[type].ToString();
         if (CheckCombination())
             OpenLock();
