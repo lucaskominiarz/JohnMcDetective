@@ -1681,6 +1681,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8475534510545860466, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
   m_PrefabInstance: {fileID: 1179593383}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1213142061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+  m_PrefabInstance: {fileID: 1849652050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1260157901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,6 +2449,11 @@ Transform:
   - {fileID: 940639729}
   m_Father: {fileID: 1034090025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1834990019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3429398807123295719, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+  m_PrefabInstance: {fileID: 1849652050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1849652050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2452,6 +2462,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2699787582784228408, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429398807123295719, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3748182595061902893, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.08048
@@ -2492,9 +2510,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4380668647683620958, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_Name
+      value: BestiairePageButon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380668647683620958, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5026965743336270381, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1834990019}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1213142061}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1213142061}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081022216552258206, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 132
+      objectReference: {fileID: 0}
+    - target: {fileID: 7081022216552258206, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 467
       objectReference: {fileID: 0}
     - target: {fileID: 7143335685169178730, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2512,9 +2590,23 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7866946280115014948, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_text
+      value: "- Le suspect qu'il poss\xE8de ne peut pas se trouver dans une pi\xE8ce
+        adjacente \xE0 celle d\u2019un humain\r\n- Avoue sa culpabilit\xE9 s\u2019il
+        est l\u2019auteur du meurtre (Monde des Esprits)\r\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 8547955556718884333, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_Name
+      value: InvestigationPageButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
