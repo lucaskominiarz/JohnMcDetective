@@ -99,8 +99,10 @@ public class ScrollView : MonoBehaviour
             }
             else if (_currentDragDirection == DragDirection.Vertical)
             {
+                Debug.Log("bismillah les tenebres"); 
+                /*
                 float deltaYWorld = deltaPixels.y * unitsPerPixel;
-                transform.position = new Vector3(_startCamPos.x, _startCamPos.y - deltaYWorld, _startCamPos.z);
+                transform.position = new Vector3(_startCamPos.x, _startCamPos.y - deltaYWorld, _startCamPos.z);*/
             }
 
             _touchVelocity = (currentScreenPos - _lastScreenPos) / Time.deltaTime;
