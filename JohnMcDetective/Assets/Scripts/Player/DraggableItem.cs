@@ -30,7 +30,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         originalParent = transform.parent;
         originalPosition = transform.position;
 
-        transform.SetParent(transform.root);
+        transform.SetParent(transform.parent.parent);
         transform.SetAsLastSibling();
 
         itemIcon.raycastTarget = false;

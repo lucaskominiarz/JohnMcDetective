@@ -234,7 +234,7 @@ MonoBehaviour:
     inSpiritWorld: 1
   - type: 3
     roomName: Salon des esprits
-    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    backGround: {fileID: 0}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: de5b0a2772f24b940a236d42619ed0fc, type: 3}
@@ -245,22 +245,26 @@ MonoBehaviour:
     inSpiritWorld: 1
   - type: 3
     roomName: Chambre des esprits
-    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    backGround: {fileID: 0}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: 4e465433193f1234c80e813bc8fe41e3, type: 3}
       layer: 1
-      positionX: 1.457
+      positionX: -0.066
       npcData: {fileID: 11400000, guid: 50a04dae8d190e14582caecff380885a, type: 2}
     isLocked: 0
     inSpiritWorld: 1
-  - type: 0
-    roomName: 
-    backGround: {fileID: 0}
+  - type: 3
+    roomName: Teleporteur
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
     canvas: {fileID: 0}
-    roomObjects: []
+    roomObjects:
+    - prefab: {fileID: 3433437180587144489, guid: 5f40b389eadfa464a93feb63af949a7d, type: 3}
+      layer: 0
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 50a04dae8d190e14582caecff380885a, type: 2}
     isLocked: 0
-    inSpiritWorld: 0
+    inSpiritWorld: 1
   - type: 0
     roomName: 
     backGround: {fileID: 0}
