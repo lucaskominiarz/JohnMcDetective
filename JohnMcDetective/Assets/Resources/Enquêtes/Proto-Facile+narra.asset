@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e022610ea8f58574f8e415605717541b, type: 3}
+  m_Name: Proto-Facile+narra
+  m_EditorClassIdentifier: Assembly-CSharp::MapData
+  gridWidth: 6
+  gridHeight: 3
+  startPosition: {x: 3, y: 2}
+  spiritStartPosition: {x: 2, y: 0}
+  globalLayers: []
+  rooms:
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 1
+    roomName: 
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 4e465433193f1234c80e813bc8fe41e3, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: 6ed216cfbc81e384ab682ae7998f16b3, type: 2}
+    isLocked: 0
+    inSpiritWorld: 1
+  - type: 1
+    roomName: 
+    backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
+    canvas: {fileID: 0}
+    roomObjects:
+    - prefab: {fileID: 3433437180587144489, guid: 5f40b389eadfa464a93feb63af949a7d, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 0
+    roomName: 
+    backGround: {fileID: 0}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Chambre
+    backGround: {fileID: 8619222799904399816, guid: b62ef0ee0f3e84042b5faa15b95ec254, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: b2685480079f6b243bb862cdf7f508bd, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 11400000, guid: a4be5896f03ffe845a07f59d9f5b2e5f, type: 2}
+    - prefab: {fileID: 8555060986797281281, guid: b992417574dfbab4b9d4595af33a6c7b, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 3986913512089535476, guid: ba1b8c00cbcf7fb45a6d123b9160ca5c, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Salle de bain
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    canvas: {fileID: 0}
+    roomObjects: []
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: Salon
+    backGround: {fileID: 5291735378062778481, guid: 8f37c2ca0d12dad429b628759af996c9, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: d93598690967cae43aa833493389c8ea, type: 3}
+      layer: 1
+      positionX: 0.727
+      npcData: {fileID: 11400000, guid: 6db0ee7f5d3ccd94ab5aca2274470714, type: 2}
+    - prefab: {fileID: 8887531214628173330, guid: 30bab225be78196498fa01ed94d37259, type: 3}
+      layer: 0
+      positionX: -0.773
+      npcData: {fileID: 0}
+    - prefab: {fileID: 5913673691703868458, guid: acbd500a7e0177247a9d193f934a62a2, type: 3}
+      layer: 0
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 1667832776044387427, guid: dd45526fe8dce4942b83c12125962609, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 956743071285273650, guid: 3aadf8d561fe0b042a1d3d29f187253c, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 1
+    roomName: 
+    backGround: {fileID: 5740862254468283520, guid: b99f220b7957f394fb3a7a1d70a2532d, type: 3}
+    canvas: {fileID: 0}
+    roomObjects:
+    - prefab: {fileID: 1300193702386794501, guid: 7f76ef39c7f22be4e9936e5c59e91680, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 3
+    roomName: 
+    backGround: {fileID: 5740862254468283520, guid: 1a269ec2d6ed43742996b7948a519638, type: 3}
+    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    roomObjects:
+    - prefab: {fileID: 1513895650028354144, guid: 890de514bf0f22d4d87949338e942928, type: 3}
+      layer: 0
+      positionX: 0.49
+      npcData: {fileID: 11400000, guid: 3c3142b0f59483f4dbb600a5895a33ec, type: 2}
+    - prefab: {fileID: 4071639178666944141, guid: 5b729cd568d01be49a2106dab5d7e4d6, type: 3}
+      layer: 0
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 9051889413739496813, guid: 744f4335e10c65a47a81d3bba9bc15dc, type: 3}
+      layer: 1
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 5876314205836098390, guid: 659bb4f3e50bcf2429e07d17786425c6, type: 3}
+      layer: 1
+      positionX: 1.281
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
+  - type: 2
+    roomName: 
+    backGround: {fileID: 2559609828465629690, guid: 12498e294478b1148a4e5540f7c2c660, type: 3}
+    canvas: {fileID: 0}
+    roomObjects:
+    - prefab: {fileID: 9213077855457971279, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
+      layer: 1
+      positionX: 1.235
+      npcData: {fileID: 0}
+    isLocked: 0
+    inSpiritWorld: 0
