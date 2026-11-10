@@ -3808,6 +3808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd31180571106f468426eaa045f47a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneTest
+  sceneName: 
 --- !u!1 &1250795790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,7 +3825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1250795791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6016,7 +6017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2106352003
 RectTransform:
   m_ObjectHideFlags: 0
