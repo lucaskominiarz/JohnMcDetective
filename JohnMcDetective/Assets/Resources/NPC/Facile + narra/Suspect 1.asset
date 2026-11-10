@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
   m_Name: Suspect 1
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
-  <NpcType>k__BackingField: 1
+  <NpcType>k__BackingField: 0
   <RevealObjectType>k__BackingField: 0
   <NpcName>k__BackingField: Hua
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
-  <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: "Tout ce que je sais, c'est que <b>l'homme qui bois
-    du th\xE9 et moi, on est pareils</b>"
+  <IsMurderer>k__BackingField: 1
+  <VoiceLine>k__BackingField: "Tout ce que je sais, c'est que <b>l'homme dans la
+    salle du th\xE9 et moi, on est pareils</b>"
   <VoiceLineAlt>k__BackingField: 

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
   m_Name: Suspect 3 (coupable)
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
-  <NpcType>k__BackingField: 0
+  <NpcType>k__BackingField: 1
   <RevealObjectType>k__BackingField: 0
   <NpcName>k__BackingField: Wang
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
-  <IsMurderer>k__BackingField: 1
+  <IsMurderer>k__BackingField: 0
   <VoiceLine>k__BackingField: "La personne qui est dans la chambre, <b>c'est bien
     un humain</b>, j'en suis s\xFBr !"
   <VoiceLineAlt>k__BackingField: 
