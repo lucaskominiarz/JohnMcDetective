@@ -1974,7 +1974,7 @@ MonoBehaviour:
   positionAccurancyThreshold: 0.2
   bookUi: {fileID: 8547955556718884333}
   bookMultiplier: 200
-  minMaxBookHeight: {x: 0, y: 1500}
+  minMaxBookHeight: {x: -700, y: 300}
 --- !u!114 &1576275640108310326
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class ScrollView : MonoBehaviour
     private Vector2 _lastScreenPos;
     private Vector2 _touchVelocity;
     private bool _isDragging = false;
+    private Vector3 _targetUiPosition;
 
     private bool _canDrag = true;
 
@@ -40,6 +41,7 @@ public class ScrollView : MonoBehaviour
             mapData.startPosition.y * pageSize.y, 
             transform.position.z);
         _targetPosition = transform.position;
+        _targetUiPosition = bookUi.transform.position;
     }
 
     private void Update()
@@ -49,6 +51,7 @@ public class ScrollView : MonoBehaviour
         if (!_isDragging)
         {
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * snapSpeed);
+            bookUi.transform.position = Vector3.Lerp(bookUi.transform.position, _targetUiPosition, Time.deltaTime * snapSpeed * bookMultiplier );
         }
     }
 
@@ -160,10 +163,10 @@ public class ScrollView : MonoBehaviour
         int startY = Mathf.RoundToInt(_startCamPos.y / pageSize.y);
 
         int targetX = startX;
-        int targetY = startY;
+        float targetY = startY;
 
         float deltaX = transform.position.x - _startCamPos.x;
-        float deltaY = transform.position.y - _startCamPos.y;
+        float deltaY = bookUi.transform.position.y - _startBookPos.y;
 
         if (_currentDragDirection == DragDirection.Horizontal)
         {
@@ -179,16 +182,28 @@ public class ScrollView : MonoBehaviour
         else if (_currentDragDirection == DragDirection.Vertical)
         {
             
+            if (Mathf.Abs(_touchVelocity.y) > velocityThreshold)
+            {
+                targetY += _touchVelocity.y < 0 ? minMaxBookHeight.y : minMaxBookHeight.x;
+            }
+            else if (Mathf.Abs(deltaY) > minMaxBookHeight.y * 0.35f)
+            {
+                targetY += deltaY > 0 ? minMaxBookHeight.y :  minMaxBookHeight.x;
+            }
+            
         }
 
-        if (mapData.GetRoom(targetX, targetY).IsEmpty)
+        if (mapData.GetRoom(targetX, startY).IsEmpty)
         {
             _targetPosition = new Vector3(startX * pageSize.x, startY * pageSize.y, transform.position.z);
             return;
         }
 
-        _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
+        _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY , bookUi.transform.position.z);
+        _targetPosition = new Vector3(targetX * pageSize.x, startY * pageSize.y, transform.position.z);
     }
+
+    
 
     public void ChangeWorld()
     {
