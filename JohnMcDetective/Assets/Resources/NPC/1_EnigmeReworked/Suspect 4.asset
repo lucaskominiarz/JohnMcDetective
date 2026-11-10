@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e289fc462aacf14b9977c9b85f2f173, type: 3}
+  m_Name: Suspect 4
+  m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
+  <NpcType>k__BackingField: 1
+  <RevealObjectType>k__BackingField: 0
+  <NpcName>k__BackingField: Wang
+  <NpcBaseSprite>k__BackingField: {fileID: 0}
+  <NpcRevealedSprite>k__BackingField: {fileID: 0}
+  <IsMurderer>k__BackingField: 0
+  <VoiceLine>k__BackingField: "<b> Chen </b> et <b> Liu </b> se comportent bizarrement
+    depuis quelques temps. On dirait qu'ils gardent en permanence <b>Hua </b> \xE0
+    distance, mais pourquoi ?..."
+  <VoiceLineAlt>k__BackingField: 
