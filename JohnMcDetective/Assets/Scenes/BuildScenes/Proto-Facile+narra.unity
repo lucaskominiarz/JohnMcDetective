@@ -783,7 +783,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1834990022}
+  m_Father: {fileID: 1840285835}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1999,11 +1999,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f37c2ca0d12dad429b628759af996c9, type: 3}
---- !u!1 &1213142061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
-  m_PrefabInstance: {fileID: 1849652050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1245070746
 GameObject:
   m_ObjectHideFlags: 0
@@ -2672,14 +2667,9 @@ Transform:
   - {fileID: 556867546}
   m_Father: {fileID: 1720272734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1834990019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3429398807123295719, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
-  m_PrefabInstance: {fileID: 1849652050}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1834990022 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7568377509741293748, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+--- !u!4 &1840285835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3748182595061902893, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
   m_PrefabInstance: {fileID: 1849652050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1849652050
@@ -2746,6 +2736,10 @@ PrefabInstance:
       propertyPath: mapData
       value: 
       objectReference: {fileID: 11400000, guid: e36daf5dc97bbbd4ab58db2e27915c47, type: 2}
+    - target: {fileID: 2814082886425198503, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: minMaxBookHeight.x
+      value: -850
+      objectReference: {fileID: 0}
     - target: {fileID: 3165488245903015413, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_text
       value: "- Le suspect qu'il poss\xE8de est toujours innocent\n\r\n"
@@ -2917,7 +2911,7 @@ PrefabInstance:
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1834990019}
+      objectReference: {fileID: 0}
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2925,7 +2919,7 @@ PrefabInstance:
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1213142061}
+      objectReference: {fileID: 0}
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -3012,7 +3006,7 @@ PrefabInstance:
     - {fileID: 7203460102205974249, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
     - {fileID: 7531466230567063492, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7568377509741293748, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 3748182595061902893, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 552909769}
     m_AddedComponents: []

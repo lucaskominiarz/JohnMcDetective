@@ -215,8 +215,8 @@ public class ScrollView : MonoBehaviour
             _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY, bookUi.transform.position.z);
         }
 
-        _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
-        
+        _targetPosition = new Vector3(targetX * pageSize.x, startY * pageSize.y, transform.position.z);
+
         //Temporaire pour le tuto bricolé GD
         if(_targetPosition == posToTrigger && tutoPassed == false)
         {
