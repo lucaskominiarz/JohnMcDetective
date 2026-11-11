@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class ScrollView : MonoBehaviour
 {
+    public static ScrollView INSTANCE;
+    
     [SerializeField] private Vector2 pageSize = new Vector2(4.5f, 10f);
     [SerializeField] private float snapSpeed = 15f;
     [SerializeField] private float velocityThreshold = 5f;
@@ -41,7 +42,10 @@ public class ScrollView : MonoBehaviour
             mapData.startPosition.y * pageSize.y, 
             transform.position.z);
         _targetPosition = transform.position;
-        _targetUiPosition = bookUi.transform.position;
+        if (bookUi != null)
+        {
+            _targetUiPosition = bookUi.transform.position;
+        }
     }
 
     private void Update()
@@ -51,7 +55,10 @@ public class ScrollView : MonoBehaviour
         if (!_isDragging)
         {
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * snapSpeed);
-            bookUi.transform.position = Vector3.Lerp(bookUi.transform.position, _targetUiPosition, Time.deltaTime * snapSpeed * bookMultiplier );
+            if (bookUi != null)
+            {
+                bookUi.transform.position = Vector3.Lerp(bookUi.transform.position, _targetUiPosition, Time.deltaTime * snapSpeed);
+            }
         }
     }
 
@@ -62,7 +69,6 @@ public class ScrollView : MonoBehaviour
             _isDragging = false;
             return;
         }
-        
 
         Pointer currentPointer = Pointer.current;
         if (currentPointer == null) return;
@@ -107,7 +113,6 @@ public class ScrollView : MonoBehaviour
             if (_currentDragDirection == DragDirection.Horizontal)
             {
                 float deltaXWorld = deltaPixels.x * unitsPerPixel;
-
                 transform.position = new Vector3(_startCamPos.x - deltaXWorld, _startCamPos.y, _startCamPos.z);
             }
             else if (_currentDragDirection == DragDirection.Vertical)
@@ -117,7 +122,7 @@ public class ScrollView : MonoBehaviour
                 {
                     bookUi.transform.position = _startBookPos + new Vector3(0, deltaYWorld, 0);
                     bookUi.transform.position = new Vector3(bookUi.transform.position.x, 
-                        Mathf.Clamp(bookUi.transform.position.y, minMaxBookHeight.x,minMaxBookHeight.y),
+                        Mathf.Clamp(bookUi.transform.position.y, minMaxBookHeight.x, minMaxBookHeight.y),
                         bookUi.transform.position.z);
                 }
             }
@@ -163,10 +168,9 @@ public class ScrollView : MonoBehaviour
         int startY = Mathf.RoundToInt(_startCamPos.y / pageSize.y);
 
         int targetX = startX;
-        float targetY = startY;
+        float targetY = bookUi != null ? bookUi.transform.position.y : 0f;
 
         float deltaX = transform.position.x - _startCamPos.x;
-        float deltaY = bookUi.transform.position.y - _startBookPos.y;
 
         if (_currentDragDirection == DragDirection.Horizontal)
         {
@@ -178,41 +182,40 @@ public class ScrollView : MonoBehaviour
             {
                 targetX += deltaX > 0 ? 1 : -1;
             }
+
+            if (mapData.GetRoom(targetX, startY).IsEmpty)
+            {
+                _targetPosition = new Vector3(startX * pageSize.x, startY * pageSize.y, transform.position.z);
+                return;
+            }
+
+            _targetPosition = new Vector3(targetX * pageSize.x, startY * pageSize.y, transform.position.z);
         }
-        else if (_currentDragDirection == DragDirection.Vertical)
+        else if (_currentDragDirection == DragDirection.Vertical && bookUi != null)
         {
-            
+            float midpoint = (minMaxBookHeight.x + minMaxBookHeight.y) * 0.5f;
+
             if (Mathf.Abs(_touchVelocity.y) > velocityThreshold)
             {
-                targetY += _touchVelocity.y < 0 ? minMaxBookHeight.y : minMaxBookHeight.x;
+                targetY = _touchVelocity.y > 0 ? minMaxBookHeight.y : minMaxBookHeight.x;
             }
-            else if (Mathf.Abs(deltaY) > minMaxBookHeight.y * 0.35f)
+            else
             {
-                targetY += deltaY > 0 ? minMaxBookHeight.y :  minMaxBookHeight.x;
+                targetY = bookUi.transform.position.y > midpoint ? minMaxBookHeight.y : minMaxBookHeight.x;
             }
-            
-        }
 
-        if (mapData.GetRoom(targetX, startY).IsEmpty)
-        {
-            _targetPosition = new Vector3(startX * pageSize.x, startY * pageSize.y, transform.position.z);
-            return;
+            _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY, bookUi.transform.position.z);
         }
-
-        _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY , bookUi.transform.position.z);
-        _targetPosition = new Vector3(targetX * pageSize.x, startY * pageSize.y, transform.position.z);
     }
-
-    
 
     public void ChangeWorld()
     {
         Vector3 newPos;
         if (_isInOverWorld)
-            newPos = new Vector3(mapData.spiritStartPosition.x * -pageSize.x, mapData.spiritStartPosition.y * pageSize.y,
+            newPos = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y,
                 transform.position.z);
         else
-            newPos = new Vector3(mapData.startPosition.x * -pageSize.x, mapData.startPosition.y * pageSize.y,
+            newPos = new Vector3(mapData.startPosition.x * pageSize.x, mapData.startPosition.y * pageSize.y,
                 transform.position.z);
         _targetPosition = newPos;
         transform.position = newPos;
