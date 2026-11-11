@@ -7,20 +7,22 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public bool isInfiniteSpawner = false;
     public bool destroyWhenDroppedInVoid = false;
 
-    private RectTransform rectTransform;
-    private Canvas canvas;
-    private CanvasGroup canvasGroup;
+    private RectTransform _rectTransform;
+    private Canvas _canvas;
+    private CanvasGroup _canvasGroup;
     
-    private Transform initialParent;
-    private Vector2 initialAnchoredPosition;
-    private int initialSiblingIndex;
+    private Transform _initialParent;
+    private Vector2 _initialAnchoredPosition;
+    private int _initialSiblingIndex;
+    private ScrollView _cameraScrollView;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null) canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        _rectTransform = GetComponent<RectTransform>();
+        _canvas = GetComponentInParent<Canvas>();
+        _canvasGroup = GetComponent<CanvasGroup>();
+        _cameraScrollView = Camera.main.GetComponent<ScrollView>();
+        if (_canvasGroup == null) _canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
     private void Start()
@@ -30,9 +32,9 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void SaveOriginalPosition()
     {
-        initialParent = transform.parent;
-        initialAnchoredPosition = rectTransform.anchoredPosition;
-        initialSiblingIndex = transform.GetSiblingIndex();
+        _initialParent = transform.parent;
+        _initialAnchoredPosition = _rectTransform.anchoredPosition;
+        _initialSiblingIndex = transform.GetSiblingIndex();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -51,23 +53,24 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
             destroyWhenDroppedInVoid = true;
         }
 
-        transform.SetParent(canvas.transform, true);
+        transform.SetParent(_canvas.transform, true);
         transform.SetAsLastSibling();
 
-        canvasGroup.blocksRaycasts = false;
+        _canvasGroup.blocksRaycasts = false;
         UpdateMousePosition(eventData);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         UpdateMousePosition(eventData);
+        _cameraScrollView.ChangeCanDragState(0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;
-
-        if (transform.parent == canvas.transform)
+        _canvasGroup.blocksRaycasts = true;
+        _cameraScrollView.ChangeCanDragState(1);
+        if (transform.parent == _canvas.transform)
         {
             if (destroyWhenDroppedInVoid)
             {
@@ -86,29 +89,29 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
 
     public void ReturnToInitialPosition()
     {
-        transform.SetParent(initialParent);
-        transform.SetSiblingIndex(initialSiblingIndex);
-        rectTransform.localScale = Vector3.one;
+        transform.SetParent(_initialParent);
+        transform.SetSiblingIndex(_initialSiblingIndex);
+        _rectTransform.localScale = Vector3.one;
 
-        if (initialParent != null && initialParent.GetComponent<LayoutGroup>() != null)
+        if (_initialParent != null && _initialParent.GetComponent<LayoutGroup>() != null)
         {
-            rectTransform.anchoredPosition = Vector2.zero;
-            LayoutRebuilder.ForceRebuildLayoutImmediate(initialParent as RectTransform);
+            _rectTransform.anchoredPosition = Vector2.zero;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(_initialParent as RectTransform);
         }
         else
         {
-            rectTransform.anchoredPosition = initialAnchoredPosition;
+            _rectTransform.anchoredPosition = _initialAnchoredPosition;
         }
     }
 
     private void UpdateMousePosition(PointerEventData eventData)
     {
         RectTransformUtility.ScreenPointToWorldPointInRectangle(
-            canvas.transform as RectTransform,
+            _canvas.transform as RectTransform,
             eventData.position,
-            canvas.worldCamera,
+            _canvas.worldCamera,
             out Vector3 globalMousePos
         );
-        rectTransform.position = globalMousePos;
+        _rectTransform.position = globalMousePos;
     }
 }
