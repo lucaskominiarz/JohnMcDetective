@@ -1266,10 +1266,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Au cas ou tu serais pass\xE9 \xE0 cot\xE9, voici ton <b> carnet d'enqu\xEAte.
-    </b> Clic dessus pour y acc\xE9der, et voir les caracteristiques des Esprits
-    dans la section <b> bestiaire </b>, et prendre des notes dans la section <b>
-    enqu\xEAte. </b>"
+  m_text: "En scrollant vers le haut, tu ouvres ton <b> carnet d'enqu\xEAte. </b>
+    Clic dessus pour y acc\xE9der, et voir les caracteristiques des Esprits dans
+    la section <b> bestiaire </b>, et prendre des notes dans la section <b> enqu\xEAte.
+    </b>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2694,11 +2694,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7514637717899313978, guid: 5f40b389eadfa464a93feb63af949a7d, type: 3}
   m_PrefabInstance: {fileID: 1195386057}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1213142061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
-  m_PrefabInstance: {fileID: 1849652050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1277025419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3922,11 +3917,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4421585532790335385, guid: 30bab225be78196498fa01ed94d37259, type: 3}
   m_PrefabInstance: {fileID: 1830641236}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1834990019 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3429398807123295719, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
-  m_PrefabInstance: {fileID: 1849652050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1848640948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4094,6 +4084,10 @@ PrefabInstance:
       propertyPath: mapData
       value: 
       objectReference: {fileID: 11400000, guid: 0a3e6dc851987954eb636a0d120d3213, type: 2}
+    - target: {fileID: 2814082886425198503, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
+      propertyPath: minMaxBookHeight.x
+      value: -850
+      objectReference: {fileID: 0}
     - target: {fileID: 3165488245903015413, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_text
       value: '- Est toujours innocent
@@ -4279,7 +4273,7 @@ PrefabInstance:
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1834990019}
+      objectReference: {fileID: 0}
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4287,7 +4281,7 @@ PrefabInstance:
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1213142061}
+      objectReference: {fileID: 0}
     - target: {fileID: 6468729091427141078, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -4375,7 +4369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8547955556718884333, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9013843281106280592, guid: 6f61a0ff66ba11b469a9088c80ecaa0d, type: 3}
       propertyPath: m_Name

@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/BuildScenes/Proto-Facile.unity
     guid: cdd64cd28cad8ae458901115169ead3e
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: df505279f8368a444862528ae506af2b
+  - enabled: 1
+    path: Assets/Scenes/Tuto Test.unity
+    guid: f1f5b77a46568f24bab783b4d50cd73f
+  - enabled: 1
+    path: Assets/Scenes/BuildScenes/1_EnigmeReworked.unity
+    guid: 1d0a1a395c8e79c4093386629d2d0832
+  - enabled: 1
     path: Assets/Scenes/BuildScenes/Proto-Facile+narra.unity
     guid: 345affc77dd3ff34dbcb118b3c61f498
   m_configObjects:

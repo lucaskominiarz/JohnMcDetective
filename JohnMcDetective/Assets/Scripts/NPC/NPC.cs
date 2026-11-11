@@ -3,7 +3,8 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
   using UnityEngine;
-  using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
   using UnityEngine.SceneManagement;
 
   public class NPC : MonoBehaviour, IPointerClickHandler
@@ -23,6 +24,10 @@ using TMPro;
     private Vector2 _baseColliderScale;
     private float _colliderSizeMultiplier = 5f;
     private BoxCollider2D _collider;
+
+    //Ajout GD Pour changer de scène
+    public UnityEvent OnArrested;
+    public bool nextSceneTransition;
     private void Awake()
     {
         if(npcData.NpcRevealedSprite) 
@@ -127,8 +132,11 @@ using TMPro;
             if (!_textZones[1])
                 return;
             _textZones[1].text = "Tu m'as démasqué";
-            StartCoroutine(RestartLevelCoroutine());
-            
+
+            //Ajout GD pour changer de scène après avoir gagné
+            if(nextSceneTransition) OnArrested.Invoke();
+            else StartCoroutine(RestartLevelCoroutine());
+
             return;
         }
         if (!_textZones[1])
