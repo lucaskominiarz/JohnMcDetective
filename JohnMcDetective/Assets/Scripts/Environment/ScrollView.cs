@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -34,6 +35,13 @@ public class ScrollView : MonoBehaviour
 
     private enum DragDirection { None, Horizontal, Vertical }
     private DragDirection _currentDragDirection = DragDirection.None;
+    
+    //Temporaire pour le tuto bricolé 
+    [Header("Temporaire tuto")] [SerializeField]
+    private bool tutoPassed = false;
+    public UnityEvent OnCameraMove;
+    public Vector3 posToTrigger;
+    
 
     private void Awake()
     {
@@ -205,6 +213,15 @@ public class ScrollView : MonoBehaviour
             }
 
             _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY, bookUi.transform.position.z);
+        }
+
+        _targetPosition = new Vector3(targetX * pageSize.x, targetY * pageSize.y, transform.position.z);
+        
+        //Temporaire pour le tuto bricolé GD
+        if(_targetPosition == posToTrigger && tutoPassed == false)
+        {
+            OnCameraMove.Invoke();
+            tutoPassed = true;
         }
     }
 
