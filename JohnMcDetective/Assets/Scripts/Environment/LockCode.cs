@@ -3,89 +3,121 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class LockCode : MonoBehaviour, IPointerClickHandler
+public class LockCode : MonoBehaviour
 {
     [SerializeField] private TMP_Text[] texts;
     [SerializeField] private List<NPCType> npcTypes;
-    [SerializeField] private List<int> npcNumbers;
-    private Dictionary<NPCType, int> _code = new Dictionary<NPCType, int>();
+    [SerializeField] private List<int> correctCounts;
+    
 
-    private bool _isClicked;
+    private int[] _selectedIndices;
+    private Dictionary<NPCType, int> _targetCombination = new Dictionary<NPCType, int>();
     private bool _isOpen;
+    
 
     private void Start()
     {
-        foreach (NPCType npcType in npcTypes)
+        _selectedIndices = new int[texts.Length];
+
+        for (int i = 0; i < Mathf.Min(npcTypes.Count, correctCounts.Count); i++)
         {
-            _code.TryAdd(npcType, 0);
+            _targetCombination.TryAdd(npcTypes[i], correctCounts[i]);
         }
+        
+        UpdateDisplay();
+        _isOpen = CheckCombination();
     }
 
-    bool CheckCombination()
+    private bool CheckCombination()
     {
-        for (int i = 0; i < npcTypes.Count; i++)
+        Dictionary<NPCType, int> currentCounts = new Dictionary<NPCType, int>();
+
+        foreach (NPCType type in npcTypes)
         {
-            if (_code[npcTypes[i]] != npcNumbers[i])
+            currentCounts.TryAdd(type, 0);
+        }
+
+        for (int i = 0; i < _selectedIndices.Length; i++)
+        {
+            NPCType selectedType = npcTypes[_selectedIndices[i]];
+            currentCounts[selectedType]++;
+        }
+
+        foreach (var kvp in _targetCombination)
+        {
+            if (currentCounts[kvp.Key] != kvp.Value)
                 return false;
         }
+
         return true;
     }
 
-    public void ChangeCombination(NPCType type, int value)
+    public void NextNpcType(int slotIndex)
     {
-        int index = 0;
-        for (int i = 0; i < npcTypes.Count; i++)
-        {
-            if (npcTypes[i] == type)
-            {
-                index = i;
-            }
-        }
-        _code[type] = Mathf.Max(0,_code[type]+value);
-        texts[index].text = _code[type].ToString();
+        ChangeSlot(slotIndex, 1);
+    }
+
+    public void PreviousNpcType(int slotIndex)
+    {
+        ChangeSlot(slotIndex, -1);
+    }
+
+    private void ChangeSlot(int slotIndex, int direction)
+    {
+        if (npcTypes == null || npcTypes.Count == 0 || slotIndex < 0 || slotIndex >= texts.Length) return;
+
+        int count = npcTypes.Count;
+        _selectedIndices[slotIndex] = (_selectedIndices[slotIndex] + direction % count + count) % count;
+
+        UpdateDisplay();
+
         if (CheckCombination())
             OpenLock();
         else
             _isOpen = false;
     }
 
-    void OpenLock()
+    private void UpdateDisplay()
     {
-        _isOpen = true;
-        // lancer anim
+        for (int i = 0; i < texts.Length; i++)
+        {
+            texts[i].text = npcTypes[_selectedIndices[i]].ToString();
+        }
     }
 
-    void ChangeWorld()
+    private void OpenLock()
+    {
+        _isOpen = true;
+        
+    }
+
+    private void ChangeWorld()
     {
         Camera.main.GetComponent<ScrollView>().ChangeWorld();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    private bool TryOpen()
     {
-        if (_isOpen) // a enlever
+        if (_isOpen)
         {
+            gameObject.SetActive(false);
             ChangeWorld();
-            return;
+            return true;
         }
-        /*
-        if (_isClicked)
-        {
-            if (_isOpen)
-            {
-                ChangeWorld();
-                return;
-            }
-            // scale diminuer
-            
-            
-        }
-        else
-        {
-            // scale augmenter
-        }
-    */
-        _isClicked = !_isClicked;
+        return false;
     }
+
+    public void CallTryOpen()
+    {
+        TryOpen();
+    }
+
+    public void OpenUi()
+    {
+        if (TryOpen())
+            return;
+        gameObject.SetActive(!gameObject.activeSelf);
+    }
+    
 }
