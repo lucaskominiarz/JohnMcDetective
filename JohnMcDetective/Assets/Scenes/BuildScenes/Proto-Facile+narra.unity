@@ -2735,6 +2735,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3.59
       objectReference: {fileID: 0}
+    - target: {fileID: 6708998444640115187, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
+      propertyPath: npcNumbers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708998444640115187, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
+      propertyPath: 'npcNumbers.Array.data[1]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708998444640115187, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
+      propertyPath: 'npcNumbers.Array.data[2]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708998444640115187, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
+      propertyPath: 'npcNumbers.Array.data[3]'
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6795938014192795073, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 9.38
