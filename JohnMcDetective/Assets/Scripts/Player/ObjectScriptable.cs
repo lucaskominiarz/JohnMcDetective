@@ -6,6 +6,7 @@ public class ObjectScriptable : ScriptableObject
     [field: SerializeField] public ObjectType ObjectType { get; private set; }
     [field:SerializeField] public string ObjectName { get; private set; }
     [field: SerializeField] public Sprite ObjectSprite { get; private set; }
+    [field: SerializeField] public Sprite ObjectUnactiveSprite { get; private set; }
     [field: SerializeField] public Vector2 ObjectScale { get; private set; }
     
 }

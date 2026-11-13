@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjectScriptable
   <ObjectType>k__BackingField: 0
   <ObjectName>k__BackingField: Mandat
-  <ObjectSprite>k__BackingField: {fileID: -1311842932860294666, guid: 9449b7b2a4e95ab4d8bbd1d83b6380d4, type: 3}
+  <ObjectSprite>k__BackingField: {fileID: 21300000, guid: c54e6e1d6b637974aa74a5507e18dbe9, type: 3}
+  <ObjectUnactiveSprite>k__BackingField: {fileID: -6546754923819256781, guid: 7fb8dfda7a92e0b4f870b225916c74a7, type: 3}
   <ObjectScale>k__BackingField: {x: 2.5, y: 2.5}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -12,23 +13,20 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("Composants UI")]
     [SerializeField] private Image itemIcon;
 
-    private Transform originalParent;
-    private Vector3 originalPosition;
+    private Transform _originalParent;
+    private Vector3 _originalPosition;
 
-    private void Start()
-    {
-        if (itemData != null && itemIcon != null)
-        {
-            itemIcon.sprite = itemData.ObjectSprite;
-        }
-    }
+    private bool _canDrag = false;
 
+   
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (!_canDrag)
+            return;
         IsDraggingAnyItem = true;
 
-        originalParent = transform.parent;
-        originalPosition = transform.position;
+        _originalParent = transform.parent;
+        _originalPosition = transform.position;
 
         transform.SetParent(transform.parent.parent);
         transform.SetAsLastSibling();
@@ -38,6 +36,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrag(PointerEventData eventData)
     {
+        if (!_canDrag)
+            return;
         transform.position = eventData.position;
     }
 
@@ -46,11 +46,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         IsDraggingAnyItem = false;
 
         itemIcon.raycastTarget = true;
-
+        
+        if (!_canDrag)
+            return;
+        
         DetectDropOnNPC(eventData.position);
 
-        transform.SetParent(originalParent);
-        transform.position = originalPosition;
+        transform.SetParent(_originalParent);
+        transform.position = _originalPosition;
     }
 
     private void DetectDropOnNPC(Vector2 screenPosition)
@@ -68,4 +71,25 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             }
         }
     }
+
+    private void OnEnable()
+    {
+        if (itemData == null)
+            return;
+        if (itemData.ObjectType == ObjectType.Mandat)
+            LockCode.OnOpened += () =>
+            {
+                _canDrag = true; 
+                itemIcon.sprite = itemData.ObjectSprite;
+            };
+        if (itemIcon != null)
+        {
+            if (!_canDrag)
+                itemIcon.sprite = itemData.ObjectUnactiveSprite;
+            else
+                itemIcon.sprite = itemData.ObjectSprite;
+        }
+        
+    }
+    
 }

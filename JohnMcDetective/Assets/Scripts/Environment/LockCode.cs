@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LockCode : MonoBehaviour
 {
+    public static event Action OnOpened;
+    
     [SerializeField] private TMP_Text[] texts;
     [SerializeField] private List<NPCType> npcTypes;
     [SerializeField] private List<int> correctCounts;
@@ -71,11 +73,6 @@ public class LockCode : MonoBehaviour
         _selectedIndices[slotIndex] = (_selectedIndices[slotIndex] + direction % count + count) % count;
 
         UpdateDisplay();
-
-        if (CheckCombination())
-            OpenLock();
-        else
-            _isOpen = false;
     }
 
     private void UpdateDisplay()
@@ -89,7 +86,7 @@ public class LockCode : MonoBehaviour
     private void OpenLock()
     {
         _isOpen = true;
-        
+        OnOpened?.Invoke();
     }
 
     private void ChangeWorld()
@@ -110,6 +107,10 @@ public class LockCode : MonoBehaviour
 
     public void CallTryOpen()
     {
+        if (CheckCombination())
+        {
+            OpenLock();
+        }
         TryOpen();
     }
 
