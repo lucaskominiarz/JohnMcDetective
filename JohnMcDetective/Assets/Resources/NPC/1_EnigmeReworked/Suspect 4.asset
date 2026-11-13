@@ -18,7 +18,7 @@ MonoBehaviour:
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: "<b> Chen </b> et <b> Liu </b> se comportent bizarrement
-    depuis quelques temps. On dirait qu'ils gardent en permanence <b>Hua </b> \xE0
-    distance, mais pourquoi ?..."
+  <VoiceLine>k__BackingField: <b> Chen </b> et <b> Liu </b> se comportent bizarrement
+    depuis quelques temps. On dirait qu'ils ne peuvent plus s'approcher de <b>Hua
+    </b>, mais pourquoi ?...
   <VoiceLineAlt>k__BackingField: 

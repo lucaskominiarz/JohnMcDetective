@@ -13,12 +13,12 @@ public class NPCScriptable : ScriptableObject
     [field:SerializeField] public string VoiceLine { get; private set; }
     [field:ShowIf("HaveAltVoiceline")][field:SerializeField] public string VoiceLineAlt { get; private set; }
 
-    bool HaveAltVoiceline() { return NpcType != NPCType.Renard; }
+    bool HaveAltVoiceline() { return NpcType != NPCType.Esprit_Farceur; }
 }
 public enum NPCType 
 {
     Humain,
-    BaiZe,
-    Mei,
-    Renard
+    Esprit_Protecteur,
+    Esprit_Chasseur,
+    Esprit_Farceur
 }

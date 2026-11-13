@@ -18,6 +18,6 @@ MonoBehaviour:
   <NpcBaseSprite>k__BackingField: {fileID: 0}
   <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
-  <VoiceLine>k__BackingField: J'ai entendu <b> Hua </b> et <b> Liu </b> veiller tard
-    dans la nuit. C'est pour ca qu'ils se reposent dans leurs <b>chambres. </b>
+  <VoiceLine>k__BackingField: "<b> Hua </b> et <b> Liu </b> semblent avoir veill\xE9
+    tard cette nuit. C'est pour ca qu'ils se reposent dans leurs <b>chambres. </b>"
   <VoiceLineAlt>k__BackingField: 

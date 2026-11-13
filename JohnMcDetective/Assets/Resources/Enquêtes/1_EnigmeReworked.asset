@@ -197,14 +197,10 @@ MonoBehaviour:
       npcData: {fileID: 0}
     isLocked: 0
     inSpiritWorld: 0
-  - type: 2
+  - type: 0
     roomName: 
-    backGround: {fileID: 2559609828465629690, guid: 12498e294478b1148a4e5540f7c2c660, type: 3}
+    backGround: {fileID: 0}
     canvas: {fileID: 0}
-    roomObjects:
-    - prefab: {fileID: 9213077855457971279, guid: 6c99780c8db00db4c8d3af582c629fb9, type: 3}
-      layer: 1
-      positionX: 1.235
-      npcData: {fileID: 0}
+    roomObjects: []
     isLocked: 0
     inSpiritWorld: 0
