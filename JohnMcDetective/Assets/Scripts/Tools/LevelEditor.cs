@@ -197,6 +197,10 @@ public class LevelEditor : EditorWindow
         {
             GameObject bg = (GameObject)PrefabUtility.InstantiatePrefab(room.backGround, roomGo.transform);
             bg.transform.position = roomBasePosition;
+            
+            SpriteRenderer bgSr = bg.GetComponentInChildren<SpriteRenderer>();
+            if (bgSr != null) bgSr.sortingOrder = -10;
+
             Undo.RegisterCreatedObjectUndo(bg, "Instantiate Background");
         }
 
@@ -231,8 +235,12 @@ public class LevelEditor : EditorWindow
                     component.SetNpcDatas(obj.npcData);
                 }
 
-                SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
-                if (sr != null) sr.sortingOrder = obj.layer + 1;
+                SpriteRenderer sr = newObj.GetComponentInChildren<SpriteRenderer>();
+                if (sr != null) 
+                {
+                    sr.sortingOrder = obj.layer; 
+                }
+
                 Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");
             }
         }
@@ -511,10 +519,13 @@ public class LevelEditor : EditorWindow
 
         if (!room.IsEmpty && room.roomObjects != null)
         {
+            var sortedObjects = new List<ObjectItem>(room.roomObjects);
+            sortedObjects.Sort((a, b) => a.layer.CompareTo(b.layer));
+
             float halfWidth = cameraMoveValue.x / 2f;
             float halfHeight = cameraMoveValue.y / 2f;
 
-            foreach (var item in room.roomObjects)
+            foreach (var item in sortedObjects)
             {
                 float globalY = targetMap.GetLayerY(item.layer);
                 float normalizedX = (item.positionX + halfWidth) / cameraMoveValue.x;
