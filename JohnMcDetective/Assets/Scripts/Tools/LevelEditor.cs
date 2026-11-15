@@ -58,49 +58,57 @@ public class LevelEditor : EditorWindow
     }
 
     private void DrawHeader()
+{
+    EditorGUILayout.Space(5);
+    targetMap = (MapData)EditorGUILayout.ObjectField("Carte active", targetMap, typeof(MapData), false);
+
+    if (targetMap == null) return;
+
+    EditorGUI.BeginChangeCheck();
+    int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
+    int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
+    targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
+    targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
+
+    EditorGUILayout.Space(5);
+    EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
+    
+    if (targetMap.globalLayers == null)
+        targetMap.globalLayers = new List<GlobalLayerData>();
+    int indexToRemove = -1;
+
+    for (int i = 0; i < targetMap.globalLayers.Count; i++)
     {
-        EditorGUILayout.Space(5);
-        targetMap = (MapData)EditorGUILayout.ObjectField("Carte active", targetMap, typeof(MapData), false);
-
-        if (targetMap == null) return;
-
-        EditorGUI.BeginChangeCheck();
-        int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
-        int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
-        targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
-        targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
-
-        EditorGUILayout.Space(5);
-        EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
+        EditorGUILayout.BeginHorizontal();
+        targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
+        targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
         
-        if (targetMap.globalLayers == null)
-            targetMap.globalLayers = new List<GlobalLayerData>();
-
-        for (int i = 0; i < targetMap.globalLayers.Count; i++)
+        if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
         {
-            EditorGUILayout.BeginHorizontal();
-            targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
-            targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
-            if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
-            {
-                targetMap.globalLayers.RemoveAt(i);
-                break;
-            }
-            EditorGUILayout.EndHorizontal();
+            indexToRemove = i;
         }
-
-        if (GUILayout.Button("+ Ajouter un Layer Global"))
-        {
-            targetMap.globalLayers.Add(new GlobalLayerData { layer = targetMap.globalLayers.Count, yPosition = targetMap.globalLayers.Count * 1.5f });
-        }
-
-        if (EditorGUI.EndChangeCheck())
-        {
-            Undo.RecordObject(targetMap, "Redimensionner la grille ou modifier les layers");
-            targetMap.ResizeGrid(newWidth, newHeight);
-        }
+        EditorGUILayout.EndHorizontal();
+    }
+    if (indexToRemove != -1)
+    {
+        targetMap.globalLayers.RemoveAt(indexToRemove);
+        GUIUtility.ExitGUI();
     }
 
+    if (GUILayout.Button("+ Ajouter un Layer Global"))
+    {
+        targetMap.globalLayers.Add(new GlobalLayerData { 
+            layer = targetMap.globalLayers.Count, 
+            yPosition = -targetMap.globalLayers.Count * 1.5f 
+        });
+    }
+
+    if (EditorGUI.EndChangeCheck())
+    {
+        Undo.RecordObject(targetMap, "Redimensionner la grille ou modifier les layers");
+        targetMap.ResizeGrid(newWidth, newHeight);
+    }
+}
     #region Generation In Editor
     private void DrawGenerationArea()
     {
