@@ -18,6 +18,7 @@ public class MapData : ScriptableObject
     public Vector2Int spiritStartPosition = Vector2Int.zero;
 
     public List<GlobalLayerData> globalLayers = new List<GlobalLayerData>();
+    public GameObject roomSpriteMaskPrefab;
 
     [SerializeField] private RoomData[] rooms = new RoomData[25];
 

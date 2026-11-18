@@ -19,6 +19,7 @@ MonoBehaviour:
   globalLayers:
   - layer: 1
     yPosition: 0
+  roomSpriteMaskPrefab: {fileID: 0}
   rooms:
   - type: 1
     roomName: Couloir

@@ -58,57 +58,61 @@ public class LevelEditor : EditorWindow
     }
 
     private void DrawHeader()
-{
-    EditorGUILayout.Space(5);
-    targetMap = (MapData)EditorGUILayout.ObjectField("Carte active", targetMap, typeof(MapData), false);
-
-    if (targetMap == null) return;
-
-    EditorGUI.BeginChangeCheck();
-    int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
-    int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
-    targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
-    targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
-
-    EditorGUILayout.Space(5);
-    EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
-    
-    if (targetMap.globalLayers == null)
-        targetMap.globalLayers = new List<GlobalLayerData>();
-    int indexToRemove = -1;
-
-    for (int i = 0; i < targetMap.globalLayers.Count; i++)
     {
-        EditorGUILayout.BeginHorizontal();
-        targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
-        targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
+        EditorGUILayout.Space(5);
+        targetMap = (MapData)EditorGUILayout.ObjectField("Carte active", targetMap, typeof(MapData), false);
+
+        if (targetMap == null) return;
+
+        EditorGUI.BeginChangeCheck();
+        int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
+        int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
         
-        if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
+        targetMap.roomSpriteMaskPrefab = (GameObject)EditorGUILayout.ObjectField("Prefab SpriteMask Salle", targetMap.roomSpriteMaskPrefab, typeof(GameObject), false);
+
+        targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
+        targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
+
+        EditorGUILayout.Space(5);
+        EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
+        
+        if (targetMap.globalLayers == null)
+            targetMap.globalLayers = new List<GlobalLayerData>();
+        int indexToRemove = -1;
+
+        for (int i = 0; i < targetMap.globalLayers.Count; i++)
         {
-            indexToRemove = i;
+            EditorGUILayout.BeginHorizontal();
+            targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
+            targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
+            
+            if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
+            {
+                indexToRemove = i;
+            }
+            EditorGUILayout.EndHorizontal();
         }
-        EditorGUILayout.EndHorizontal();
-    }
-    if (indexToRemove != -1)
-    {
-        targetMap.globalLayers.RemoveAt(indexToRemove);
-        GUIUtility.ExitGUI();
+        if (indexToRemove != -1)
+        {
+            targetMap.globalLayers.RemoveAt(indexToRemove);
+            GUIUtility.ExitGUI();
+        }
+
+        if (GUILayout.Button("+ Ajouter un Layer Global"))
+        {
+            targetMap.globalLayers.Add(new GlobalLayerData { 
+                layer = targetMap.globalLayers.Count, 
+                yPosition = -targetMap.globalLayers.Count * 1.5f 
+            });
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(targetMap, "Redimensionner la grille ou modifier les layers");
+            targetMap.ResizeGrid(newWidth, newHeight);
+        }
     }
 
-    if (GUILayout.Button("+ Ajouter un Layer Global"))
-    {
-        targetMap.globalLayers.Add(new GlobalLayerData { 
-            layer = targetMap.globalLayers.Count, 
-            yPosition = -targetMap.globalLayers.Count * 1.5f 
-        });
-    }
-
-    if (EditorGUI.EndChangeCheck())
-    {
-        Undo.RecordObject(targetMap, "Redimensionner la grille ou modifier les layers");
-        targetMap.ResizeGrid(newWidth, newHeight);
-    }
-}
     #region Generation In Editor
     private void DrawGenerationArea()
     {
@@ -201,13 +205,27 @@ public class LevelEditor : EditorWindow
 
         Vector2 roomBasePosition = new Vector2(cameraMoveValue.x * x, cameraMoveValue.y * y);
 
+        bool hasMask = (x + y) % 2 == 0;
+        SpriteMaskInteraction interactionType = hasMask ? SpriteMaskInteraction.VisibleInsideMask : SpriteMaskInteraction.VisibleOutsideMask;
+
+        if (hasMask && targetMap.roomSpriteMaskPrefab != null)
+        {
+            GameObject maskGo = (GameObject)PrefabUtility.InstantiatePrefab(targetMap.roomSpriteMaskPrefab, roomGo.transform);
+            maskGo.transform.position = roomBasePosition;
+            Undo.RegisterCreatedObjectUndo(maskGo, "Instantiate Sprite Mask");
+        }
+
         if (room.backGround != null)
         {
             GameObject bg = (GameObject)PrefabUtility.InstantiatePrefab(room.backGround, roomGo.transform);
             bg.transform.position = roomBasePosition;
             
             SpriteRenderer bgSr = bg.GetComponentInChildren<SpriteRenderer>();
-            if (bgSr != null) bgSr.sortingOrder = -10;
+            if (bgSr != null) 
+            {
+                bgSr.sortingOrder = -10;
+                bgSr.maskInteraction = interactionType;
+            }
 
             Undo.RegisterCreatedObjectUndo(bg, "Instantiate Background");
         }
@@ -247,6 +265,7 @@ public class LevelEditor : EditorWindow
                 if (sr != null) 
                 {
                     sr.sortingOrder = obj.layer; 
+                    sr.maskInteraction = interactionType;
                 }
 
                 Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");

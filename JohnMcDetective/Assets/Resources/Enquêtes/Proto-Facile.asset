@@ -17,6 +17,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 2}
   spiritStartPosition: {x: 2, y: 0}
   globalLayers: []
+  roomSpriteMaskPrefab: {fileID: 0}
   rooms:
   - type: 0
     roomName: 
