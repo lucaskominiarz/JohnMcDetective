@@ -10,24 +10,38 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     private RectTransform _rectTransform;
     private Canvas _canvas;
     private CanvasGroup _canvasGroup;
-    
+
     private Transform _initialParent;
     private Vector2 _initialAnchoredPosition;
     private int _initialSiblingIndex;
     private ScrollView _cameraScrollView;
+    
+    private DraggableBlock _spawnerOwner;
+    private GameObject _activeSpawnedInstance;
+    private bool _isDraggedCopy = false;
+    private bool _spawnedFromInfinite = false;
 
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
         _canvas = GetComponentInParent<Canvas>();
         _canvasGroup = GetComponent<CanvasGroup>();
-        _cameraScrollView = Camera.main.GetComponent<ScrollView>();
+        if (_cameraScrollView == null && Camera.main != null)
+            _cameraScrollView = Camera.main.GetComponent<ScrollView>();
         if (_canvasGroup == null) _canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
     private void Start()
     {
         SaveOriginalPosition();
+    }
+
+    private void OnDestroy()
+    {
+        if (_isDraggedCopy && _spawnerOwner != null)
+        {
+            _spawnerOwner.NotifyInstanceDestroyed(gameObject);
+        }
     }
 
     public void SaveOriginalPosition()
@@ -43,14 +57,38 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         {
             GameObject clone = Instantiate(gameObject, transform.parent);
             clone.transform.SetSiblingIndex(transform.GetSiblingIndex());
-            
+
             DraggableBlock cloneScript = clone.GetComponent<DraggableBlock>();
             cloneScript.isInfiniteSpawner = true;
             cloneScript.destroyWhenDroppedInVoid = false;
+            cloneScript._spawnedFromInfinite = false;
             cloneScript.SaveOriginalPosition();
 
             isInfiniteSpawner = false;
             destroyWhenDroppedInVoid = true;
+            _spawnedFromInfinite = true;
+        }
+        else if (!_isDraggedCopy && !_spawnedFromInfinite)
+        {
+            if (_activeSpawnedInstance != null) return;
+
+            GameObject clone = Instantiate(gameObject, transform.parent);
+            clone.transform.SetSiblingIndex(transform.GetSiblingIndex());
+
+            DraggableBlock cloneScript = clone.GetComponent<DraggableBlock>();
+            cloneScript.isInfiniteSpawner = false;
+            cloneScript.destroyWhenDroppedInVoid = destroyWhenDroppedInVoid;
+            cloneScript._spawnedFromInfinite = false;
+            cloneScript._spawnerOwner = this;
+            cloneScript._isDraggedCopy = true;
+            cloneScript.SaveOriginalPosition();
+
+            _activeSpawnedInstance = clone;
+            SetPlaceholderActive(false);
+
+            eventData.pointerDrag = clone;
+            cloneScript.OnBeginDrag(eventData);
+            return;
         }
 
         transform.SetParent(_canvas.transform, true);
@@ -63,13 +101,16 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
     public void OnDrag(PointerEventData eventData)
     {
         UpdateMousePosition(eventData);
-        _cameraScrollView.ChangeCanDragState(0);
+        if (_cameraScrollView != null)
+            _cameraScrollView.ChangeCanDragState(0);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
-        _cameraScrollView.ChangeCanDragState(1);
+        if (_cameraScrollView != null)
+            _cameraScrollView.ChangeCanDragState(1);
+
         if (transform.parent == _canvas.transform)
         {
             if (destroyWhenDroppedInVoid)
@@ -84,6 +125,22 @@ public class DraggableBlock : MonoBehaviour, IBeginDragHandler, IDragHandler, IE
         else
         {
             SaveOriginalPosition();
+        }
+    }
+
+    private void SetPlaceholderActive(bool active)
+    {
+        _canvasGroup.interactable = active;
+        _canvasGroup.blocksRaycasts = active;
+        _canvasGroup.alpha = active ? 1f : 0.35f;
+    }
+
+    public void NotifyInstanceDestroyed(GameObject destroyedInstance)
+    {
+        if (_activeSpawnedInstance == destroyedInstance)
+        {
+            _activeSpawnedInstance = null;
+            SetPlaceholderActive(true);
         }
     }
 

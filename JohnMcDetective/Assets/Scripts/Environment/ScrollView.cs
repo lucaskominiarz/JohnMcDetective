@@ -17,6 +17,7 @@ public class ScrollView : MonoBehaviour
     [SerializeField] private GameObject bookUi;
     [SerializeField] private float bookMultiplier = 1000f;
     [SerializeField] private Vector2 minMaxBookHeight;
+    [SerializeField] private GameObject buttonClose;
 
     private Camera _cam;
     private Vector3 _targetPosition;
@@ -25,12 +26,11 @@ public class ScrollView : MonoBehaviour
     private Vector2 _touchVelocity;
     private bool _isDragging = false;
     private Vector3 _targetUiPosition;
-
+    private float _midpoint;
     private bool _canDrag = true;
-
+    private bool _isCurrentlyOpen;
     private Vector3 _startCamPos;
     private Vector3 _startBookPos;
-
     private bool _isInOverWorld = true;
 
     private enum DragDirection { None, Horizontal, Vertical }
@@ -54,12 +54,18 @@ public class ScrollView : MonoBehaviour
         {
             _targetUiPosition = bookUi.transform.position;
         }
+        _midpoint = (minMaxBookHeight.x + minMaxBookHeight.y) * 0.5f;
     }
 
     private void Update()
     {
         HandleTouchInput();
-
+        _isCurrentlyOpen = bookUi.transform.position.y > _midpoint;
+        if (_isCurrentlyOpen && !buttonClose.activeSelf)
+            buttonClose.SetActive(true);
+        else if(!_isCurrentlyOpen && buttonClose.activeSelf)
+            buttonClose.SetActive(false);
+        
         if (!_isDragging)
         {
             transform.position = Vector3.Lerp(transform.position, _targetPosition, Time.deltaTime * snapSpeed);
@@ -107,7 +113,7 @@ public class ScrollView : MonoBehaviour
 
             if (_currentDragDirection == DragDirection.None)
             {
-                if (Mathf.Abs(deltaPixels.x) > dragThresholdPixels)
+                if (!_isCurrentlyOpen && Mathf.Abs(deltaPixels.x) > dragThresholdPixels)
                 {
                     _currentDragDirection = DragDirection.Horizontal;
                 }
@@ -244,5 +250,19 @@ public class ScrollView : MonoBehaviour
     public void ChangeCanDragState(int newState)
     {
         _canDrag = newState != 0;
+    }
+    
+    public void ToggleBookUi()
+    {
+        if (bookUi == null) return;
+        float targetY = _isCurrentlyOpen ? minMaxBookHeight.x : minMaxBookHeight.y;
+        _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY, bookUi.transform.position.z);
+    }
+
+    public void ForceCloseUi()
+    {
+        if (bookUi == null) return;
+        float targetY =  minMaxBookHeight.x;
+        _targetUiPosition = new Vector3(bookUi.transform.position.x, targetY, bookUi.transform.position.z);
     }
 }
