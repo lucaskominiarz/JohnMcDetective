@@ -21,6 +21,7 @@ MonoBehaviour:
     yPosition: 0
   - layer: 1
     yPosition: -1.5
+  roomSpriteMaskPrefab: {fileID: 0}
   rooms:
   - type: 1
     roomName: 
