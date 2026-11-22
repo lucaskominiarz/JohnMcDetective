@@ -11,9 +11,9 @@ using UnityEngine.EventSystems;
 {
     [SerializeField] private NPCScriptable npcData;
     
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform speechBubble;
     [SerializeField] private float tweenDuration = 0.5f;
+    
     
     
     private bool _isRevealed = false;
@@ -30,8 +30,6 @@ using UnityEngine.EventSystems;
     public bool nextSceneTransition;
     private void Awake()
     {
-        if(npcData.NpcRevealedSprite) 
-            spriteRenderer.sprite = npcData.NpcBaseSprite;
         if (speechBubble)
         {
             int size = speechBubble.childCount;
@@ -82,14 +80,10 @@ using UnityEngine.EventSystems;
         if (_textZones.Length == 0)
             return;
         _textZones[0].text = npcData.NpcName;
-        string finalLine = npcData.VoiceLine;
-        if (_isRevealed)
-        {
-            finalLine += " " + npcData.VoiceLineAlt;
-        }
+        
         if (!_textZones[1])
             return;
-        _textZones[1].text = finalLine;
+        _textZones[1].text = npcData.VoiceLine;
     }
 
     public void UseObject(ObjectScriptable usedObject)
@@ -99,15 +93,6 @@ using UnityEngine.EventSystems;
             Arrest();
             return;
         }
-
-        if (usedObject.ObjectType == npcData.RevealObjectType)
-        {
-            Reveal();
-        }
-        else
-        {
-            Debug.Log("Mauvais objet"); // a changer
-        }
     }
 
     public void SetSpeechBubble(Transform newSpeechBubble)
@@ -115,15 +100,6 @@ using UnityEngine.EventSystems;
         speechBubble = newSpeechBubble;
     }
     
-    void Reveal()
-    {
-        _isRevealed = true;
-        if(npcData.NpcRevealedSprite) 
-            spriteRenderer.sprite = npcData.NpcRevealedSprite;
-        speechBubble.DOScale(_baseSpeechBubbleScale, tweenDuration);
-        PlayVoiceline();
-    }
-
     void Arrest() // modifier pour mettre une vraie fin
     {
         if (npcData.IsMurderer)
