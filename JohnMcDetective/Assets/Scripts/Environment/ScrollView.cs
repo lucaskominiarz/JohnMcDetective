@@ -32,6 +32,10 @@ public class ScrollView : MonoBehaviour
     private Vector3 _startCamPos;
     private Vector3 _startBookPos;
     private bool _isInOverWorld = true;
+    private int _startGridX;
+    private int _startGridY;
+    private float _minDragX;
+    private float _maxDragX;
 
     private enum DragDirection { None, Horizontal, Vertical }
     private DragDirection _currentDragDirection = DragDirection.None;
@@ -100,6 +104,15 @@ public class ScrollView : MonoBehaviour
             _touchStartScreenPos = currentPointer.position.ReadValue();
             _lastScreenPos = _touchStartScreenPos;
             _startCamPos = transform.position;
+            _startGridX = Mathf.RoundToInt(_startCamPos.x / pageSize.x);
+            _startGridY = Mathf.RoundToInt(_startCamPos.y / pageSize.y);
+
+            bool canGoLeft = !mapData.GetRoom(_startGridX - 1, _startGridY).IsEmpty;
+            bool canGoRight = !mapData.GetRoom(_startGridX + 1, _startGridY).IsEmpty;
+
+            _minDragX = canGoLeft ? _startCamPos.x - pageSize.x : _startCamPos.x;
+            _maxDragX = canGoRight ? _startCamPos.x + pageSize.x : _startCamPos.x;
+
             if (bookUi != null)
             {
                 _startBookPos = bookUi.transform.position;
@@ -127,7 +140,8 @@ public class ScrollView : MonoBehaviour
             if (_currentDragDirection == DragDirection.Horizontal)
             {
                 float deltaXWorld = deltaPixels.x * unitsPerPixel;
-                transform.position = new Vector3(_startCamPos.x - deltaXWorld, _startCamPos.y, _startCamPos.z);
+                float desiredX = Mathf.Clamp(_startCamPos.x - deltaXWorld, _minDragX, _maxDragX);
+                transform.position = new Vector3(desiredX, _startCamPos.y, _startCamPos.z);
             }
             else if (_currentDragDirection == DragDirection.Vertical)
             {
