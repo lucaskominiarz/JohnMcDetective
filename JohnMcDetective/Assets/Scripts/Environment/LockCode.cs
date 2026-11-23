@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ public class LockCode : MonoBehaviour
     private int[] _selectedIndices;
     private Dictionary<NPCType, int> _targetCombination = new Dictionary<NPCType, int>();
     private bool _isOpen;
+    private Vector3 _lastOpenedPosition;
     
 
     private void Start()

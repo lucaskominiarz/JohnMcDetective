@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class ScrollView : MonoBehaviour
+public class ScrollView : MonoBehaviour // code pas super propre mais marche donc on touche pas 
 {
     public static ScrollView INSTANCE;
     
@@ -46,7 +46,8 @@ public class ScrollView : MonoBehaviour
     public UnityEvent OnCameraMove;
     public Vector3 posToTrigger;
     
-
+    private Vector3 _lastWorldChangedPosition;
+    
     private void Awake()
     {
         _cam = GetComponent<Camera>();
@@ -59,6 +60,7 @@ public class ScrollView : MonoBehaviour
             _targetUiPosition = bookUi.transform.position;
         }
         _midpoint = (minMaxBookHeight.x + minMaxBookHeight.y) * 0.5f;
+        _lastWorldChangedPosition = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y, transform.position.z);
     }
 
     private void Update()
@@ -247,18 +249,14 @@ public class ScrollView : MonoBehaviour
 
     public void ChangeWorld()
     {
-        Vector3 newPos;
-        if (_isInOverWorld)
-            newPos = new Vector3(mapData.spiritStartPosition.x * pageSize.x, mapData.spiritStartPosition.y * pageSize.y,
-                transform.position.z);
-        else
-            newPos = new Vector3(mapData.startPosition.x * pageSize.x, mapData.startPosition.y * pageSize.y,
-                transform.position.z);
+        Vector3 newPos= _lastWorldChangedPosition;
+        _lastWorldChangedPosition = transform.position;
         _targetPosition = newPos;
         transform.position = newPos;
         _lastScreenPos = newPos;
         _startCamPos = newPos;
         _isInOverWorld = !_isInOverWorld;
+        
     }
 
     public void ChangeCanDragState(int newState)
