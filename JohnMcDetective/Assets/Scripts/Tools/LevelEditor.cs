@@ -245,11 +245,12 @@ public class LevelEditor : EditorWindow
                 if (obj.prefab == null) continue;
 
                 float globalY = targetMap.GetLayerY(obj.layer);
+                float finalY = globalY + obj.offsetY;
 
                 GameObject newObj = (GameObject)PrefabUtility.InstantiatePrefab(obj.prefab, roomGo.transform);
                 newObj.transform.position = new Vector2(
                     roomBasePosition.x + Mathf.Clamp(obj.positionX, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f),
-                    roomBasePosition.y + globalY
+                    roomBasePosition.y + finalY
                 );
 
                 if (newObj.TryGetComponent<NPC>(out NPC component))
@@ -438,8 +439,9 @@ public class LevelEditor : EditorWindow
                 
                 room.roomObjects[i].layer = EditorGUILayout.IntField("Layer", room.roomObjects[i].layer);
                 room.roomObjects[i].positionX = EditorGUILayout.Slider("Position X", room.roomObjects[i].positionX, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f);
+                room.roomObjects[i].offsetY = EditorGUILayout.Slider("Offset Y", room.roomObjects[i].offsetY, -cameraMoveValue.y / 2f, cameraMoveValue.y / 2f);
 
-                float calculatedY = targetMap.GetLayerY(room.roomObjects[i].layer);
+                float calculatedY = targetMap.GetLayerY(room.roomObjects[i].layer) + room.roomObjects[i].offsetY;
                 EditorGUI.BeginDisabledGroup(true);
                 EditorGUILayout.Vector2Field("Position Finale (X, Y)", new Vector2(room.roomObjects[i].positionX, calculatedY));
                 EditorGUI.EndDisabledGroup();
@@ -462,7 +464,8 @@ public class LevelEditor : EditorWindow
                 list.Add(new ObjectItem 
                 { 
                     layer = 1,
-                    positionX = 0f
+                    positionX = 0f,
+                    offsetY = 0f
                 });
                 
                 room.roomObjects = list.ToArray();
@@ -500,6 +503,7 @@ public class LevelEditor : EditorWindow
                     prefab = source.roomObjects[i].prefab,
                     layer = source.roomObjects[i].layer,
                     positionX = source.roomObjects[i].positionX,
+                    offsetY = source.roomObjects[i].offsetY,
                     npcData = source.roomObjects[i].npcData
                 };
             }
@@ -554,9 +558,9 @@ public class LevelEditor : EditorWindow
 
             foreach (var item in sortedObjects)
             {
-                float globalY = targetMap.GetLayerY(item.layer);
+                float finalY = targetMap.GetLayerY(item.layer) + item.offsetY;
                 float normalizedX = (item.positionX + halfWidth) / cameraMoveValue.x;
-                float normalizedY = (halfHeight - globalY) / cameraMoveValue.y;
+                float normalizedY = (halfHeight - finalY) / cameraMoveValue.y;
 
                 float pixelX = normalizedX * localRect.width;
                 float pixelY = normalizedY * localRect.height;
