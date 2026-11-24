@@ -67,6 +67,9 @@ public class LevelEditor : EditorWindow
         EditorGUI.BeginChangeCheck();
         int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
         int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
+        
+        targetMap.roomSpriteMaskPrefab = (GameObject)EditorGUILayout.ObjectField("Prefab SpriteMask Salle", targetMap.roomSpriteMaskPrefab, typeof(GameObject), false);
+
         targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
         targetMap.spiritStartPosition = EditorGUILayout.Vector2IntField("Position de départ monde des esprits", targetMap.spiritStartPosition);
 
@@ -75,23 +78,32 @@ public class LevelEditor : EditorWindow
         
         if (targetMap.globalLayers == null)
             targetMap.globalLayers = new List<GlobalLayerData>();
+        int indexToRemove = -1;
 
         for (int i = 0; i < targetMap.globalLayers.Count; i++)
         {
             EditorGUILayout.BeginHorizontal();
             targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
             targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
+            
             if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
             {
-                targetMap.globalLayers.RemoveAt(i);
-                break;
+                indexToRemove = i;
             }
             EditorGUILayout.EndHorizontal();
+        }
+        if (indexToRemove != -1)
+        {
+            targetMap.globalLayers.RemoveAt(indexToRemove);
+            GUIUtility.ExitGUI();
         }
 
         if (GUILayout.Button("+ Ajouter un Layer Global"))
         {
-            targetMap.globalLayers.Add(new GlobalLayerData { layer = targetMap.globalLayers.Count, yPosition = targetMap.globalLayers.Count * 1.5f });
+            targetMap.globalLayers.Add(new GlobalLayerData { 
+                layer = targetMap.globalLayers.Count, 
+                yPosition = -targetMap.globalLayers.Count * 1.5f 
+            });
         }
 
         if (EditorGUI.EndChangeCheck())
@@ -193,10 +205,28 @@ public class LevelEditor : EditorWindow
 
         Vector2 roomBasePosition = new Vector2(cameraMoveValue.x * x, cameraMoveValue.y * y);
 
+        bool hasMask = (x + y) % 2 == 0;
+        SpriteMaskInteraction interactionType = hasMask ? SpriteMaskInteraction.VisibleInsideMask : SpriteMaskInteraction.VisibleOutsideMask;
+
+        if (hasMask && targetMap.roomSpriteMaskPrefab != null)
+        {
+            GameObject maskGo = (GameObject)PrefabUtility.InstantiatePrefab(targetMap.roomSpriteMaskPrefab, roomGo.transform);
+            maskGo.transform.position = roomBasePosition;
+            Undo.RegisterCreatedObjectUndo(maskGo, "Instantiate Sprite Mask");
+        }
+
         if (room.backGround != null)
         {
             GameObject bg = (GameObject)PrefabUtility.InstantiatePrefab(room.backGround, roomGo.transform);
             bg.transform.position = roomBasePosition;
+            
+            SpriteRenderer bgSr = bg.GetComponentInChildren<SpriteRenderer>();
+            if (bgSr != null) 
+            {
+                bgSr.sortingOrder = -10;
+                bgSr.maskInteraction = interactionType;
+            }
+
             Undo.RegisterCreatedObjectUndo(bg, "Instantiate Background");
         }
 
@@ -231,8 +261,13 @@ public class LevelEditor : EditorWindow
                     component.SetNpcDatas(obj.npcData);
                 }
 
-                SpriteRenderer sr = newObj.GetComponent<SpriteRenderer>();
-                if (sr != null) sr.sortingOrder = obj.layer + 1;
+                SpriteRenderer sr = newObj.GetComponentInChildren<SpriteRenderer>();
+                if (sr != null) 
+                {
+                    sr.sortingOrder = obj.layer; 
+                    sr.maskInteraction = interactionType;
+                }
+
                 Undo.RegisterCreatedObjectUndo(newObj, "Instantiate Object");
             }
         }
@@ -511,10 +546,13 @@ public class LevelEditor : EditorWindow
 
         if (!room.IsEmpty && room.roomObjects != null)
         {
+            var sortedObjects = new List<ObjectItem>(room.roomObjects);
+            sortedObjects.Sort((a, b) => a.layer.CompareTo(b.layer));
+
             float halfWidth = cameraMoveValue.x / 2f;
             float halfHeight = cameraMoveValue.y / 2f;
 
-            foreach (var item in room.roomObjects)
+            foreach (var item in sortedObjects)
             {
                 float globalY = targetMap.GetLayerY(item.layer);
                 float normalizedX = (item.positionX + halfWidth) / cameraMoveValue.x;

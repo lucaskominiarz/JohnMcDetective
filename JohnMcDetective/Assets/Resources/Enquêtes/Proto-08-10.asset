@@ -19,6 +19,7 @@ MonoBehaviour:
   globalLayers:
   - layer: 1
     yPosition: 0
+  roomSpriteMaskPrefab: {fileID: 0}
   rooms:
   - type: 1
     roomName: Couloir
@@ -79,7 +80,11 @@ MonoBehaviour:
       positionX: 0
       npcData: {fileID: 11400000, guid: fe7bc84fb45cc514ebbf39b08c888561, type: 2}
     - prefab: {fileID: 1300193702386794501, guid: cf8e458455738a54ab7597f1412dd948, type: 3}
-      layer: 1
+      layer: 3
+      positionX: 0
+      npcData: {fileID: 0}
+    - prefab: {fileID: 1513895650028354144, guid: 4e465433193f1234c80e813bc8fe41e3, type: 3}
+      layer: 0
       positionX: 0
       npcData: {fileID: 0}
     isLocked: 0
