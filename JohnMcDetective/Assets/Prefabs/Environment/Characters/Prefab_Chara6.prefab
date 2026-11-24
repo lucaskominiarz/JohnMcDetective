@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8653719598885068355, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_Name
-      value: Chara6
+      value: Prefab_Chara6
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 31
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_LocalPosition.z
@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5841958491460802671, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5841958491460802671, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       propertyPath: m_MaskInteraction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70,6 +70,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5425687488159365526}
+    - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4063208026974126811}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 4f1786586d66f194d85981ccfa173379, type: 3}
 --- !u!1 &4382968011267810326 stripped
 GameObject:
@@ -89,7 +92,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   npcData: {fileID: 0}
-  spriteRenderer: {fileID: 0}
   speechBubble: {fileID: 0}
   tweenDuration: 0.5
   OnArrested:
@@ -130,7 +132,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.025217533, y: 3.3875585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -140,5 +142,27 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4626184, y: 6.2284403}
   m_EdgeRadius: 0
+--- !u!95 &4063208026974126811
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4382968011267810326}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

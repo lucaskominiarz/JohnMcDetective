@@ -19,7 +19,7 @@ MonoBehaviour:
   globalLayers:
   - layer: 4
     yPosition: -2.95
-  roomSpriteMaskPrefab: {fileID: 0}
+  roomSpriteMaskPrefab: {fileID: 960729197143295388, guid: f7c71305fdea7cf488b9630986256a6f, type: 3}
   rooms:
   - type: 0
     roomName: 
