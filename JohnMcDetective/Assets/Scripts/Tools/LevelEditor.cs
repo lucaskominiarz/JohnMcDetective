@@ -3,6 +3,7 @@
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LevelEditor : EditorWindow
 {
@@ -11,14 +12,13 @@ public class LevelEditor : EditorWindow
     private Vector2 objectsScrollPosition;
     private Vector2 selectedCell = new Vector2(-1, -1);
     private Vector2 cameraMoveValue = new Vector2(4.5f, 10f);
-    
+
     private RoomData copiedRoom;
     private bool hasCopiedRoom = false;
-    
+
     private const float CellSize = 75f;
     private const float CellPadding = 4f;
     private const string ParentName = "RoomsParent";
-    
 
     [MenuItem("Tools/Level Editor")]
     public static void OpenWindow()
@@ -67,7 +67,7 @@ public class LevelEditor : EditorWindow
         EditorGUI.BeginChangeCheck();
         int newWidth = EditorGUILayout.IntSlider("Largeur (Salles)", targetMap.gridWidth, 1, 15);
         int newHeight = EditorGUILayout.IntSlider("Hauteur (Salles)", targetMap.gridHeight, 1, 15);
-        
+
         targetMap.roomSpriteMaskPrefab = (GameObject)EditorGUILayout.ObjectField("Prefab SpriteMask Salle", targetMap.roomSpriteMaskPrefab, typeof(GameObject), false);
 
         targetMap.startPosition = EditorGUILayout.Vector2IntField("Position de départ monde normal", targetMap.startPosition);
@@ -75,7 +75,7 @@ public class LevelEditor : EditorWindow
 
         EditorGUILayout.Space(5);
         EditorGUILayout.LabelField("Configuration Globale des Layers (Hauteurs Y)", EditorStyles.boldLabel);
-        
+
         if (targetMap.globalLayers == null)
             targetMap.globalLayers = new List<GlobalLayerData>();
         int indexToRemove = -1;
@@ -85,7 +85,7 @@ public class LevelEditor : EditorWindow
             EditorGUILayout.BeginHorizontal();
             targetMap.globalLayers[i].layer = EditorGUILayout.IntField("Layer ID", targetMap.globalLayers[i].layer, GUILayout.Width(300));
             targetMap.globalLayers[i].yPosition = EditorGUILayout.FloatField("Position Y", targetMap.globalLayers[i].yPosition);
-            
+
             if (GUILayout.Button("Supprimer", GUILayout.Width(80)))
             {
                 indexToRemove = i;
@@ -100,9 +100,10 @@ public class LevelEditor : EditorWindow
 
         if (GUILayout.Button("+ Ajouter un Layer Global"))
         {
-            targetMap.globalLayers.Add(new GlobalLayerData { 
-                layer = targetMap.globalLayers.Count, 
-                yPosition = -targetMap.globalLayers.Count * 1.5f 
+            targetMap.globalLayers.Add(new GlobalLayerData
+            {
+                layer = targetMap.globalLayers.Count,
+                yPosition = -targetMap.globalLayers.Count * 1.5f
             });
         }
 
@@ -119,7 +120,7 @@ public class LevelEditor : EditorWindow
         EditorGUILayout.Space(10);
         EditorGUILayout.BeginVertical("box");
         EditorGUILayout.LabelField("Génération dans la Scène", EditorStyles.boldLabel);
-        
+
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Générer toute la Map", GUILayout.Height(30)))
         {
@@ -149,7 +150,6 @@ public class LevelEditor : EditorWindow
 
         EditorGUILayout.EndVertical();
     }
-    
 
     private Transform GetOrCreateRoomsParent()
     {
@@ -164,7 +164,7 @@ public class LevelEditor : EditorWindow
 
     private void GenerateFullMap()
     {
-        ClearFullMap(); 
+        ClearFullMap();
         for (int x = 0; x < targetMap.gridWidth; x++)
         {
             for (int y = 0; y < targetMap.gridHeight; y++)
@@ -190,13 +190,13 @@ public class LevelEditor : EditorWindow
         RoomData room = targetMap.GetRoom(x, y);
         if (room.IsEmpty)
         {
-            ClearRoomInScene(x, y); 
+            ClearRoomInScene(x, y);
             return;
         }
 
         Transform parent = GetOrCreateRoomsParent();
         string roomName = $"Room_{x}_{y}";
-       
+
         ClearRoomInScene(x, y);
 
         GameObject roomGo = new GameObject(roomName);
@@ -219,9 +219,9 @@ public class LevelEditor : EditorWindow
         {
             GameObject bg = (GameObject)PrefabUtility.InstantiatePrefab(room.backGround, roomGo.transform);
             bg.transform.position = roomBasePosition;
-            
+
             SpriteRenderer bgSr = bg.GetComponentInChildren<SpriteRenderer>();
-            if (bgSr != null) 
+            if (bgSr != null)
             {
                 bgSr.sortingOrder = -10;
                 bgSr.maskInteraction = interactionType;
@@ -237,7 +237,7 @@ public class LevelEditor : EditorWindow
             cv.transform.position = roomBasePosition;
             Undo.RegisterCreatedObjectUndo(cv, "Instantiate Canvas");
         }
-        
+
         if (room.roomObjects != null)
         {
             foreach (ObjectItem obj in room.roomObjects)
@@ -263,9 +263,9 @@ public class LevelEditor : EditorWindow
                 }
 
                 SpriteRenderer sr = newObj.GetComponentInChildren<SpriteRenderer>();
-                if (sr != null) 
+                if (sr != null)
                 {
-                    sr.sortingOrder = obj.layer; 
+                    sr.sortingOrder = obj.layer;
                     sr.maskInteraction = interactionType;
                 }
 
@@ -317,11 +317,11 @@ public class LevelEditor : EditorWindow
             GUI.backgroundColor = Color.yellow;
         else if (room.IsEmpty)
             GUI.backgroundColor = new Color(0.3f, 0.3f, 0.3f);
-        else if(room.inSpiritWorld)
+        else if (room.inSpiritWorld)
             GUI.backgroundColor = new Color(0.8f, 0.6f, 1f);
         else
             GUI.backgroundColor = new Color(0.4f, 0.8f, 0.4f);
-        
+
         string label = room.IsEmpty ? $"[{x},{y}]\nVide" : $"[{x},{y}]\n{room.roomName}\n({room.type})";
 
         if (GUILayout.Button(label, GUILayout.Width(CellSize), GUILayout.Height(CellSize)))
@@ -354,7 +354,7 @@ public class LevelEditor : EditorWindow
         EditorGUI.BeginChangeCheck();
 
         EditorGUILayout.LabelField($"Coordonnées : X = {posX}, Y = {posY}", EditorStyles.miniBoldLabel);
-        
+
         EditorGUILayout.Space(2);
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Copier"))
@@ -400,7 +400,7 @@ public class LevelEditor : EditorWindow
             room.roomName = EditorGUILayout.TextField("Nom de la pièce", room.roomName);
             room.inSpiritWorld = EditorGUILayout.Toggle("Pièce monde des esprits", room.inSpiritWorld);
             room.isLocked = EditorGUILayout.Toggle("Pièce verrouillée", room.isLocked);
-            
+
             EditorGUILayout.Space(10);
             EditorGUILayout.LabelField("Background (Prefab)", EditorStyles.boldLabel);
             room.backGround = (GameObject)EditorGUILayout.ObjectField("Background (Prefab)", room.backGround, typeof(GameObject), false);
@@ -421,7 +421,7 @@ public class LevelEditor : EditorWindow
             for (int i = 0; i < room.roomObjects.Length; i++)
             {
                 EditorGUILayout.BeginVertical("box");
-                
+
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.LabelField($"Objet {i + 1}", EditorStyles.boldLabel);
                 if (GUILayout.Button("-", GUILayout.Width(25)))
@@ -431,12 +431,12 @@ public class LevelEditor : EditorWindow
                 EditorGUILayout.EndHorizontal();
 
                 room.roomObjects[i].prefab = (GameObject)EditorGUILayout.ObjectField("Prefab", room.roomObjects[i].prefab, typeof(GameObject), false);
-                
+
                 if (room.roomObjects[i].prefab != null && room.roomObjects[i].prefab.GetComponentInChildren<NPC>() != null)
                 {
                     room.roomObjects[i].npcData = (NPCScriptable)EditorGUILayout.ObjectField("Données NPC", room.roomObjects[i].npcData, typeof(NPCScriptable), false);
                 }
-                
+
                 room.roomObjects[i].layer = EditorGUILayout.IntField("Layer", room.roomObjects[i].layer);
                 room.roomObjects[i].positionX = EditorGUILayout.Slider("Position X", room.roomObjects[i].positionX, -cameraMoveValue.x / 2f, cameraMoveValue.x / 2f);
                 room.roomObjects[i].offsetY = EditorGUILayout.Slider("Offset Y", room.roomObjects[i].offsetY, -cameraMoveValue.y / 2f, cameraMoveValue.y / 2f);
@@ -461,13 +461,13 @@ public class LevelEditor : EditorWindow
             if (GUILayout.Button("+ Ajouter un Objet"))
             {
                 var list = new System.Collections.Generic.List<ObjectItem>(room.roomObjects);
-                list.Add(new ObjectItem 
-                { 
+                list.Add(new ObjectItem
+                {
                     layer = 1,
                     positionX = 0f,
                     offsetY = 0f
                 });
-                
+
                 room.roomObjects = list.ToArray();
             }
         }
@@ -537,13 +537,14 @@ public class LevelEditor : EditorWindow
         Rect previewRect = GUILayoutUtility.GetRect(screenWidth, screenHeight);
         GUI.BeginGroup(previewRect);
         Rect localRect = new Rect(0, 0, previewRect.width, previewRect.height);
-        
+
         EditorGUI.DrawRect(localRect, new Color(0.15f, 0.15f, 0.15f, 1f));
 
         if (room.backGround != null)
         {
-            DrawPrefabPreview(localRect, room.backGround, true);
+            DrawPrefabComposite(localRect, room.backGround, true);
         }
+
         Handles.color = new Color(0.4f, 0.4f, 0.4f, 0.5f);
         Handles.DrawLine(new Vector3(localRect.width / 2f, 0), new Vector3(localRect.width / 2f, localRect.height));
         Handles.DrawLine(new Vector3(0, localRect.height / 2f), new Vector3(localRect.width, localRect.height / 2f));
@@ -565,24 +566,26 @@ public class LevelEditor : EditorWindow
                 float pixelX = normalizedX * localRect.width;
                 float pixelY = normalizedY * localRect.height;
 
-                float objWidth = 36f;
-                float objHeight = 36f;
-
                 if (item.prefab != null)
                 {
-                    SpriteRenderer objSr = item.prefab.GetComponentInChildren<SpriteRenderer>();
-                    if (objSr != null && objSr.sprite != null)
-                    {
-                        Vector3 scale = item.prefab.transform.localScale;
-                        objWidth = objSr.sprite.bounds.size.x * scale.x * (localRect.width / cameraMoveValue.x);
-                        objHeight = objSr.sprite.bounds.size.y * scale.y * (localRect.height / cameraMoveValue.y);
-                    }
+                    Rect worldBounds = GetPrefabLocalBounds(item.prefab);
+                    float worldWidth = Mathf.Max(worldBounds.width, 0.05f);
+                    float worldHeight = Mathf.Max(worldBounds.height, 0.05f);
 
-                    if (objWidth < 4f) objWidth = 12f;
-                    if (objHeight < 4f) objHeight = 12f;
+                    float objWidth = worldWidth * (localRect.width / cameraMoveValue.x);
+                    float objHeight = worldHeight * (localRect.height / cameraMoveValue.y);
 
-                    Rect objRect = new Rect(pixelX - objWidth / 2f, pixelY - objHeight / 2f, objWidth, objHeight);
-                    DrawPrefabPreview(objRect, item.prefab, false);
+                    float centerOffsetX = worldBounds.center.x * (localRect.width / cameraMoveValue.x);
+                    float centerOffsetY = -worldBounds.center.y * (localRect.height / cameraMoveValue.y);
+
+                    Rect objRect = new Rect(
+                        pixelX + centerOffsetX - objWidth / 2f,
+                        pixelY + centerOffsetY - objHeight / 2f,
+                        objWidth,
+                        objHeight
+                    );
+
+                    DrawPrefabComposite(objRect, item.prefab, false);
                 }
                 else
                 {
@@ -598,42 +601,173 @@ public class LevelEditor : EditorWindow
         EditorGUILayout.EndVertical();
     }
 
-    private void DrawPrefabPreview(Rect rect, GameObject prefab, bool isBackground)
+    private Rect GetPrefabLocalBounds(GameObject prefab)
+    {
+        SpriteRenderer[] renderers = prefab.GetComponentsInChildren<SpriteRenderer>(true);
+        bool hasAny = false;
+        float minX = 0f, maxX = 0f, minY = 0f, maxY = 0f;
+
+        foreach (var sr in renderers)
+        {
+            if (sr == null || sr.sprite == null) continue;
+
+            GetRelativeTransform2D(prefab.transform, sr.transform, out Vector2 relPos, out Vector2 relScale);
+            Bounds sb = sr.sprite.bounds;
+
+            float sx = sb.min.x * relScale.x + relPos.x;
+            float ex = sb.max.x * relScale.x + relPos.x;
+            float sy = sb.min.y * relScale.y + relPos.y;
+            float ey = sb.max.y * relScale.y + relPos.y;
+
+            float rMinX = Mathf.Min(sx, ex);
+            float rMaxX = Mathf.Max(sx, ex);
+            float rMinY = Mathf.Min(sy, ey);
+            float rMaxY = Mathf.Max(sy, ey);
+
+            if (!hasAny)
+            {
+                minX = rMinX;
+                maxX = rMaxX;
+                minY = rMinY;
+                maxY = rMaxY;
+                hasAny = true;
+            }
+            else
+            {
+                minX = Mathf.Min(minX, rMinX);
+                maxX = Mathf.Max(maxX, rMaxX);
+                minY = Mathf.Min(minY, rMinY);
+                maxY = Mathf.Max(maxY, rMaxY);
+            }
+        }
+
+        if (!hasAny)
+        {
+            Vector3 s = prefab.transform.localScale;
+            return new Rect(-0.5f * Mathf.Abs(s.x), -0.5f * Mathf.Abs(s.y), Mathf.Max(Mathf.Abs(s.x), 0.25f), Mathf.Max(Mathf.Abs(s.y), 0.25f));
+        }
+
+        return Rect.MinMaxRect(minX, minY, maxX, maxY);
+    }
+
+    private void GetRelativeTransform2D(Transform root, Transform target, out Vector2 relPos, out Vector2 relScale)
+    {
+        List<Transform> chain = new List<Transform>();
+        Transform curr = target;
+        while (curr != null)
+        {
+            chain.Add(curr);
+            if (curr == root) break;
+            curr = curr.parent;
+        }
+        chain.Reverse();
+
+        relPos = Vector2.zero;
+        relScale = Vector2.one;
+
+        for (int i = 0; i < chain.Count; i++)
+        {
+            Transform t = chain[i];
+            if (i == 0 && t == root)
+            {
+                relScale = new Vector2(Mathf.Abs(t.localScale.x), Mathf.Abs(t.localScale.y));
+                if (relScale.x < 0.0001f) relScale.x = 1f;
+                if (relScale.y < 0.0001f) relScale.y = 1f;
+                relPos = Vector2.zero;
+            }
+            else
+            {
+                relPos = Vector2.Scale(relPos, t.localScale) + (Vector2)t.localPosition;
+                relScale = Vector2.Scale(relScale, new Vector2(Mathf.Abs(t.localScale.x), Mathf.Abs(t.localScale.y)));
+            }
+        }
+    }
+
+    private void DrawPrefabComposite(Rect rect, GameObject prefab, bool isBackground)
     {
         if (prefab == null) return;
 
-        Color savedColor = GUI.color;
-        SpriteRenderer sr = prefab.GetComponentInChildren<SpriteRenderer>();
-
-        if (sr != null)
+        if (isBackground)
         {
-            GUI.color = sr.color;
+            SpriteRenderer[] bgRenderers = prefab.GetComponentsInChildren<SpriteRenderer>(true)
+                .Where(r => r != null && r.sprite != null && r.sprite.texture != null)
+                .OrderBy(r => r.sortingOrder)
+                .ToArray();
 
-            if (sr.sprite != null && sr.sprite.texture != null)
+            if (bgRenderers.Length > 0)
             {
-                Sprite sprite = sr.sprite;
-                Rect tr = sprite.textureRect;
-                Texture2D tex = sprite.texture;
-
-                Rect uv = new Rect(
-                    tr.x / tex.width,
-                    tr.y / tex.height,
-                    tr.width / tex.width,
-                    tr.height / tex.height
-                );
-
-                GUI.DrawTextureWithTexCoords(rect, tex, uv, true);
-                GUI.color = savedColor;
+                Color saved = GUI.color;
+                foreach (var sr in bgRenderers)
+                {
+                    GUI.color = sr.color;
+                    Sprite sprite = sr.sprite;
+                    Rect tr = sprite.textureRect;
+                    Texture2D tex = sprite.texture;
+                    Rect uv = new Rect(tr.x / tex.width, tr.y / tex.height, tr.width / tex.width, tr.height / tex.height);
+                    GUI.DrawTextureWithTexCoords(rect, tex, uv, true);
+                }
+                GUI.color = saved;
                 return;
             }
         }
 
-        Texture2D preview = AssetPreview.GetAssetPreview(prefab);
-        if (preview != null)
+        SpriteRenderer[] renderers = prefab.GetComponentsInChildren<SpriteRenderer>(true)
+            .Where(r => r != null && r.sprite != null && r.sprite.texture != null)
+            .OrderBy(r => r.sortingOrder)
+            .ToArray();
+
+        if (renderers.Length == 0)
         {
-            GUI.DrawTexture(rect, preview, isBackground ? ScaleMode.StretchToFill : ScaleMode.ScaleToFit);
+            DrawDefaultObjectMarker(rect.center.x, rect.center.y, prefab.name, rect.width, rect.height);
+            return;
         }
 
+        Rect worldBounds = GetPrefabLocalBounds(prefab);
+        float bw = Mathf.Max(worldBounds.width, 0.0001f);
+        float bh = Mathf.Max(worldBounds.height, 0.0001f);
+
+        Color savedColor = GUI.color;
+        foreach (var sr in renderers)
+        {
+            GetRelativeTransform2D(prefab.transform, sr.transform, out Vector2 relPos, out Vector2 relScale);
+            Bounds sb = sr.sprite.bounds;
+
+            float sx = sb.min.x * relScale.x + relPos.x;
+            float ex = sb.max.x * relScale.x + relPos.x;
+            float sy = sb.min.y * relScale.y + relPos.y;
+            float ey = sb.max.y * relScale.y + relPos.y;
+
+            float rMinX = Mathf.Min(sx, ex);
+            float rMaxX = Mathf.Max(sx, ex);
+            float rMinY = Mathf.Min(sy, ey);
+            float rMaxY = Mathf.Max(sy, ey);
+
+            float u0 = (rMinX - worldBounds.xMin) / bw;
+            float u1 = (rMaxX - worldBounds.xMin) / bw;
+            float v0 = (rMinY - worldBounds.yMin) / bh;
+            float v1 = (rMaxY - worldBounds.yMin) / bh;
+
+            Rect partRect = Rect.MinMaxRect(
+                rect.x + u0 * rect.width,
+                rect.y + (1f - v1) * rect.height,
+                rect.x + u1 * rect.width,
+                rect.y + (1f - v0) * rect.height
+            );
+
+            GUI.color = sr.color;
+            Sprite sprite = sr.sprite;
+            Rect tr = sprite.textureRect;
+            Texture2D tex = sprite.texture;
+
+            Rect uv = new Rect(
+                tr.x / tex.width,
+                tr.y / tex.height,
+                tr.width / tex.width,
+                tr.height / tex.height
+            );
+
+            GUI.DrawTextureWithTexCoords(partRect, tex, uv, true);
+        }
         GUI.color = savedColor;
     }
 

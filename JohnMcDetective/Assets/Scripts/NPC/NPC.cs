@@ -20,7 +20,7 @@ using UnityEngine.EventSystems;
     private TMP_Text[] _textZones;
     private bool _isSelected = false;
 
-    private Vector3 _baseSpeechBubbleScale;
+    private Vector3 _baseSpeechBubbleScale = Vector3.one;
     private Vector2 _baseColliderScale;
     private float _colliderSizeMultiplier = 5f;
     private BoxCollider2D _collider;
@@ -40,8 +40,6 @@ using UnityEngine.EventSystems;
             }
             
         }
-
-        _baseSpeechBubbleScale = speechBubble.localScale;
         speechBubble.localScale = Vector3.zero;
         _collider = GetComponent<BoxCollider2D>();
         _baseColliderScale = _collider.size;
