@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 58642f591e578f94d9aa16f65dd80945
+guid: c1708543de7ed1a4c857dacec7f0ae13
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2797637429478141991
-    second: Commode test_0
+      213: 7651358665098032008
+    second: Arbre test_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Commode test_0
+      name: Arbre test_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 286
-        height: 1007
+        width: 255
+        height: 222
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9df4e95949bcc29d0800000000000000
-      internalID: -2797637429478141991
+      spriteID: 8837642da261f2a60800000000000000
+      internalID: 7651358665098032008
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Commode test_0: -2797637429478141991
+      Arbre test_0: 7651358665098032008
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
