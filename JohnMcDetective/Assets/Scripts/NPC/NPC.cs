@@ -16,7 +16,7 @@ using UnityEngine.EventSystems;
     
     
     
-    private bool _isRevealed = false;
+    //private bool _isRevealed = false;
     private bool _wasClickedOnce = false;
     private TMP_Text[] _textZones;
     private bool _isSelected = false;

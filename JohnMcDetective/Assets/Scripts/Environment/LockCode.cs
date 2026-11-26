@@ -7,6 +7,9 @@ public class LockCode : MonoBehaviour
 {
     public static event Action OnOpened;
     
+    //Niko pour anim de sortie
+    public Animator anim;
+
     [SerializeField] private TMP_Text[] texts;
     [SerializeField] private List<NPCType> npcTypes;
     [SerializeField] private List<int> correctCounts;
@@ -15,6 +18,7 @@ public class LockCode : MonoBehaviour
     private int[] _selectedIndices;
     private Dictionary<NPCType, int> _targetCombination = new Dictionary<NPCType, int>();
     private bool _isOpen;
+    private bool _isAnimOpened;
     private Vector3 _lastOpenedPosition;
     
 
@@ -118,7 +122,19 @@ public class LockCode : MonoBehaviour
     {
         if (TryOpen())
             return;
-        gameObject.SetActive(!gameObject.activeSelf);
+        //modif pour avoir l'anim de sortie
+        if(!_isAnimOpened)
+        {
+            gameObject.SetActive(true);
+            anim.SetTrigger("OpenMenu");
+            _isAnimOpened = true;
+        }
+        else
+        {
+            anim.SetTrigger("ExitMenu");
+            _isAnimOpened = false;
+        }
+        
     }
     
 }
