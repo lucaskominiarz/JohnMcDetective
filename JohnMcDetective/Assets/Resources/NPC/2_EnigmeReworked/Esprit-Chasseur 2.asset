@@ -13,11 +13,7 @@ MonoBehaviour:
   m_Name: Esprit-Chasseur 2
   m_EditorClassIdentifier: Assembly-CSharp::NPCScriptable
   <NpcType>k__BackingField: 2
-  <RevealObjectType>k__BackingField: 0
   <NpcName>k__BackingField: Esprit-Chasseur
-  <NpcBaseSprite>k__BackingField: {fileID: 0}
-  <NpcRevealedSprite>k__BackingField: {fileID: 0}
   <IsMurderer>k__BackingField: 0
   <VoiceLine>k__BackingField: "C'est mon ami qui l'a tu\xE9, mais depuis qu'il me
-    l'a raocnt\xE9, je ne peux m'emp\xEAcher de <b>sourire. </b>"
-  <VoiceLineAlt>k__BackingField: 
+    l'a racont\xE9, je ne peux m'emp\xEAcher de <b>sourire. </b>"
