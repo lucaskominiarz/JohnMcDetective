@@ -66,7 +66,7 @@ MonoBehaviour:
   - type: 2
     roomName: 
     backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
-    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    canvas: {fileID: 7779514518320391002, guid: 5ec68ab50631ff146b1b1d666224a9d5, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: 20c153d765ec33b4aa1bb333068c3ed0, type: 3}
       layer: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   - type: 1
     roomName: 
     backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
-    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    canvas: {fileID: 7779514518320391002, guid: 5ec68ab50631ff146b1b1d666224a9d5, type: 3}
     roomObjects:
     - prefab: {fileID: 1513895650028354144, guid: de5b0a2772f24b940a236d42619ed0fc, type: 3}
       layer: 1
@@ -138,32 +138,32 @@ MonoBehaviour:
     inSpiritWorld: 0
   - type: 1
     roomName: 
-    backGround: {fileID: 5740862254468283520, guid: 1a269ec2d6ed43742996b7948a519638, type: 3}
+    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
-    - prefab: {fileID: 9195999926356719488, guid: 765ecf1afe4fee84fa4b816a2f051333, type: 3}
-      layer: 1
-      positionX: 0
-      offsetY: -2.435
+    - prefab: {fileID: 4925375536599811128, guid: 0b0c9b2ae1e3e764c8ccb9b723f324cd, type: 3}
+      layer: 3
+      positionX: 0.449
+      offsetY: -2.667
       npcData: {fileID: 11400000, guid: cf77e5e56c2021b4da4257b3aab5ed7c, type: 2}
     isLocked: 0
     inSpiritWorld: 0
   - type: 2
     roomName: 
-    backGround: {fileID: 5740862254468283520, guid: 57c9db72cd156a54882adf9fae1abbf0, type: 3}
+    backGround: {fileID: 5740862254468283520, guid: 1a269ec2d6ed43742996b7948a519638, type: 3}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
     - prefab: {fileID: 4382968011267810326, guid: 7325b1817d2264643a71df47fe094090, type: 3}
-      layer: 1
-      positionX: 0
-      offsetY: -4.627
+      layer: 3
+      positionX: 0.261
+      offsetY: -2.716
       npcData: {fileID: 11400000, guid: f58ee96225e0ee546af633942cbb65c6, type: 2}
     isLocked: 0
     inSpiritWorld: 0
   - type: 2
     roomName: 
     backGround: {fileID: 5740862254468283520, guid: b99f220b7957f394fb3a7a1d70a2532d, type: 3}
-    canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
+    canvas: {fileID: 0}
     roomObjects:
     - prefab: {fileID: 1300193702386794501, guid: 7f76ef39c7f22be4e9936e5c59e91680, type: 3}
       layer: 1
@@ -177,25 +177,25 @@ MonoBehaviour:
     backGround: {fileID: 5740862254468283520, guid: 3953035680bcc5c47851bcf403dd235c, type: 3}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
-    - prefab: {fileID: 4925375536599811128, guid: 0b0c9b2ae1e3e764c8ccb9b723f324cd, type: 3}
-      layer: 3
-      positionX: -1.024
-      offsetY: -5
+    - prefab: {fileID: 9195999926356719488, guid: 765ecf1afe4fee84fa4b816a2f051333, type: 3}
+      layer: 0
+      positionX: -1.421
+      offsetY: 0.049
       npcData: {fileID: 11400000, guid: eb29629270a501f43ad64ac0e88f7115, type: 2}
-    - prefab: {fileID: 869390127573157840, guid: 1eedcd44221f9754292619027cb4f04e, type: 3}
-      layer: 4
-      positionX: 0.961
-      offsetY: -0.167
+    - prefab: {fileID: 7188046160529032243, guid: f4defcd1596c5764ba9f1d8f769a8fe1, type: 3}
+      layer: 2
+      positionX: 1.271
+      offsetY: -1.598
       npcData: {fileID: 11400000, guid: 6979985e2c05b02429c1c88fdcf898df, type: 2}
     - prefab: {fileID: 1667832776044387427, guid: dd45526fe8dce4942b83c12125962609, type: 3}
-      layer: 2
-      positionX: 1.438
-      offsetY: -0.127
+      layer: 3
+      positionX: -0.173
+      offsetY: -1.206
       npcData: {fileID: 0}
     - prefab: {fileID: 3106263524906925973, guid: ae86923fbf9d1a4408645b966573ddf8, type: 3}
       layer: 1
-      positionX: 1.791
-      offsetY: 0
+      positionX: -0.119
+      offsetY: 0.343
       npcData: {fileID: 0}
     isLocked: 0
     inSpiritWorld: 0

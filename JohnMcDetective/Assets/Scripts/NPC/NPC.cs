@@ -64,17 +64,19 @@ using UnityEngine.EventSystems;
     {
         if (_isSelected)
         {
-            if(!_wasClickedOnce)
-            {
-                _wasClickedOnce = true;
-                OnFirstDialogue.Invoke();
-            }
+
 
             speechBubble.DOScale(Vector3.zero, tweenDuration);
             _collider.size = _baseColliderScale;
         }
         else
         {
+            if (!_wasClickedOnce)
+            {
+                _wasClickedOnce = true;
+                OnFirstDialogue.Invoke();
+            }
+
             speechBubble.DOScale(_baseSpeechBubbleScale, tweenDuration);
             PlayVoiceline();
             _collider.size *= _colliderSizeMultiplier;
