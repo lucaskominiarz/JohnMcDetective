@@ -17,6 +17,7 @@ using UnityEngine.EventSystems;
     
     
     private bool _isRevealed = false;
+    private bool _wasClickedOnce = false;
     private TMP_Text[] _textZones;
     private bool _isSelected = false;
 
@@ -24,6 +25,9 @@ using UnityEngine.EventSystems;
     private Vector2 _baseColliderScale;
     private float _colliderSizeMultiplier = 5f;
     private BoxCollider2D _collider;
+
+    //Ajout GD pour détecter le premier dialogue
+    public UnityEvent OnFirstDialogue;
 
     //Ajout GD Pour changer de scène
     public UnityEvent OnArrested;
@@ -60,6 +64,12 @@ using UnityEngine.EventSystems;
     {
         if (_isSelected)
         {
+            if(!_wasClickedOnce)
+            {
+                _wasClickedOnce = true;
+                OnFirstDialogue.Invoke();
+            }
+
             speechBubble.DOScale(Vector3.zero, tweenDuration);
             _collider.size = _baseColliderScale;
         }
