@@ -87,7 +87,7 @@ MonoBehaviour:
     backGround: {fileID: 5740862254468283520, guid: 0275ad9c0c2fedd4b8c9cd90279fe0ba, type: 3}
     canvas: {fileID: 3749876719221723215, guid: 8e277fd2d23552346a03f8f77d085b29, type: 3}
     roomObjects:
-    - prefab: {fileID: 1513895650028354144, guid: e239431388c37b540a9365632b67f5b4, type: 3}
+    - prefab: {fileID: 5908516154009724335, guid: 50a64cf128304214fa6d3fed34fb498d, type: 3}
       layer: 1
       positionX: 0
       offsetY: 0
