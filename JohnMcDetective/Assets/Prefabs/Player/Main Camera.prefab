@@ -6178,6 +6178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Esprit protecteur
       objectReference: {fileID: 0}
+    - target: {fileID: 6526650691166650266, guid: 84849a9302106dd4490efd020b7fd2b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8114166676591773516, guid: 84849a9302106dd4490efd020b7fd2b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6274,6 +6278,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8224633500587770190, guid: 84849a9302106dd4490efd020b7fd2b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224633500587770190, guid: 84849a9302106dd4490efd020b7fd2b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -216
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6292,6 +6304,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7425527328045669966}
     m_Modifications:
+    - target: {fileID: 2984716725045648684, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2984716725045648684, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -214
+      objectReference: {fileID: 0}
     - target: {fileID: 4895640234545112021, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6391,6 +6411,10 @@ PrefabInstance:
     - target: {fileID: 5956341785319406390, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
       propertyPath: m_Name
       value: Esprit farceur
+      objectReference: {fileID: 0}
+    - target: {fileID: 7495437583284756050, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8145528266602331899, guid: fb512cddb1ca600428ae5aec53330d55, type: 3}
       propertyPath: m_fontSize
@@ -6596,6 +6620,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7425527328045669966}
     m_Modifications:
+    - target: {fileID: 447312510488576372, guid: 0ffe55545d8ecb94bb502f03a76b4fe0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 447312510488576372, guid: 0ffe55545d8ecb94bb502f03a76b4fe0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -223
+      objectReference: {fileID: 0}
     - target: {fileID: 586624762468612357, guid: 0ffe55545d8ecb94bb502f03a76b4fe0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -6782,9 +6814,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7425527328045669966}
     m_Modifications:
+    - target: {fileID: 1262488553299082852, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -46
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262488553299082852, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 273
+      objectReference: {fileID: 0}
     - target: {fileID: 2380537960493704568, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
       propertyPath: m_Name
       value: Humain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2520655417958437818, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226403555124910303, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4226403555124910303, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -233
       objectReference: {fileID: 0}
     - target: {fileID: 4796225559966065379, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
       propertyPath: m_fontSize
@@ -6938,6 +6990,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.754717
       objectReference: {fileID: 0}
+    - target: {fileID: 6027190758065926183, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7074788020443827498, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -6969,6 +7025,14 @@ PrefabInstance:
     - target: {fileID: 7074788020443827498, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130949392481171721, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130949392481171721, guid: 60ff24bde7a781f49af63dda6f762d45, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7397,6 +7461,18 @@ PrefabInstance:
     - target: {fileID: 610454486498025125, guid: e008bfc832334314db787d68b112f6f4, type: 3}
       propertyPath: m_Name
       value: Esprit Chasseur
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237957059865400919, guid: e008bfc832334314db787d68b112f6f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860481544977771011, guid: e008bfc832334314db787d68b112f6f4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2860481544977771011, guid: e008bfc832334314db787d68b112f6f4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -228
       objectReference: {fileID: 0}
     - target: {fileID: 5219944596274156270, guid: e008bfc832334314db787d68b112f6f4, type: 3}
       propertyPath: m_fontSize
