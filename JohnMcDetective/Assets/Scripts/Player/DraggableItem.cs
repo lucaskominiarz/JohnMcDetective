@@ -1,4 +1,5 @@
 using System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,12 +14,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("Composants UI")]
     [SerializeField] private Image itemIcon;
 
+    [Header("Paramètres")] [SerializeField]
+    private bool uiOnUse = false;
+
+    [ShowIf("HaveUi")] [SerializeField] private GameObject uiObject;
+
     private Transform _originalParent;
     private Vector3 _originalPosition;
 
     private bool _canDrag = false;
 
-   
+    private NPC actualNpc;
+
+   bool HaveUi(){return uiOnUse;}
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (!_canDrag)
@@ -63,11 +71,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (hit.collider != null)
         {
-            NPC targetNPC = hit.collider.GetComponent<NPC>();
-            if (targetNPC != null && itemData != null)
+            actualNpc = hit.collider.GetComponent<NPC>();
+            
+            if (actualNpc != null && itemData != null)
             {
-                targetNPC.UseObject(itemData);
-                Destroy(gameObject);
+                if (itemData.ObjectType == ObjectType.Mandat && uiOnUse)
+                {
+                    uiObject.SetActive(true);
+                }
+                else
+                {
+                    actualNpc.UseObject(itemData);
+                    Destroy(gameObject);
+                }
             }
         }
     }
@@ -90,6 +106,12 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                 itemIcon.sprite = itemData.ObjectSprite;
         }
         
+    }
+
+    public void ConfirmArrestation()
+    {
+        actualNpc.UseObject(itemData);
+        Destroy(gameObject);
     }
     
 }
