@@ -14,7 +14,6 @@ public class LockCode : MonoBehaviour
     [SerializeField] private List<NPCType> npcTypes;
     [SerializeField] private List<int> correctCounts;
     
-
     private int[] _selectedIndices;
     private Dictionary<NPCType, int> _targetCombination = new Dictionary<NPCType, int>();
     private bool _isOpen;
